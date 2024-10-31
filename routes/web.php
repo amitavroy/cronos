@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/todo', TodoController::class)
-    ->only(['store']);
+    ->only(['store', 'index']);

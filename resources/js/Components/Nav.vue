@@ -4,6 +4,7 @@ import {Link} from "@inertiajs/vue3";
 const nav = {
   "primary": [
     {name: "Home", url: "/"},
+    {name: "Todos", url: "/todo"},
     {name: "Secondary", url: "/",
       subItems: [{name: "Item A", url: "/"}, {name: "Item2", url: "/"},]
     }

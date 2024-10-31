@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+    public function index()
+    {
+        $todos = Todo::orderByDesc('id')->get();
+
+        return inertia('Todo/Index', ['todos' => $todos]);
+    }
+
     public function store(Request $request)
     {
         $request->merge(['user_id' => 1]);
