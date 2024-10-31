@@ -10,7 +10,7 @@ export default {
     './resources/**/*.vue',
   ],
   daisyui: {
-    themes: ['light', 'nord']
+    themes: ['light', 'corporate']
   },
   theme: {
     extend: {
