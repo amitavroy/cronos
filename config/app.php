@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,5 +122,14 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+     * This is just a DX thing, the email and password will be autopopulated
+     * when the application is running in development mode.
+     */
+    'default_credentials' => [
+        'email' => env('DEFAULT_EMAIL'),
+        'password' => env('DEFAULT_PASSWORD'),
+    ]
 
 ];

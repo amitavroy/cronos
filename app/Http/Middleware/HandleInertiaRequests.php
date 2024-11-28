@@ -38,6 +38,8 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'app' => [
                 'name' => config('app.name'),
+                'default_email' => app('env') === 'local' ? config('app.default_credentials.email') : '',
+                'default_password' => app('env') === 'local' ? config('app.default_credentials.password') : '',
             ],
             'auth' => [
                 'user' => $request->user()

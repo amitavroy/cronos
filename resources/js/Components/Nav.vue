@@ -1,6 +1,6 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3'
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const showSearch = ref(false)
 
@@ -469,7 +469,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   />
                 </svg>
                 <div class="text-sm font-medium text-gray-900 dark:text-white">
-                  Logout
+                  <Link href="/logout" method="post">Logout</Link>
                 </div>
               </a>
             </div>
@@ -612,11 +612,13 @@ const user = computed(() => page.props?.auth?.user || null)
               aria-labelledby="dropdown"
             >
               <li>
-                <a
-                  href="#"
-                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >Sign out</a
-                >
+                <Link
+                  class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-left"
+                  href="/logout"
+                  method="post"
+                  as="button"
+                  >Sign out
+                </Link>
               </li>
             </ul>
           </div>
