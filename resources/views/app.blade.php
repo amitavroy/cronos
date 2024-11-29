@@ -8,8 +8,8 @@
   @vite('resources/css/app.css')
   @inertiaHead
 </head>
-<body class="antialiased">
-<div class="px-5 md:px-10 lg:px-20 xl:px-32 2xl:px-52 flex-grow min-h-screen">
+<body class="antialiased bg-gray-50 dark:bg-gray-800">
+<div class="">
   @inertia
 </div>
 </body>
