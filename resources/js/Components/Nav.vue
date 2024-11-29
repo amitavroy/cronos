@@ -49,7 +49,7 @@ const user = computed(() => page.props?.auth?.user || null)
               ></path>
             </svg>
           </button>
-          <a href="#" class="flex ml-2 md:mr-24">
+          <Link :href="route('home')" class="flex ml-2 md:mr-24">
             <img
               src="https://flowbite-admin-dashboard.vercel.app/images/logo.svg"
               class="h-8 mr-3"
@@ -57,10 +57,15 @@ const user = computed(() => page.props?.auth?.user || null)
             />
             <span
               class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
-              >Flowbite</span
+              >{{ app.name || 'Flowbite' }}</span
             >
-          </a>
-          <form action="#" method="GET" class="hidden lg:block lg:pl-3.5">
+          </Link>
+          <form
+            action="#"
+            method="GET"
+            class="hidden lg:block lg:pl-3.5"
+            v-if="showSearch"
+          >
             <label for="topbar-search" class="sr-only">Search</label>
             <div class="relative mt-1 lg:w-96">
               <div
@@ -90,18 +95,6 @@ const user = computed(() => page.props?.auth?.user || null)
           </form>
         </div>
         <div class="flex items-center">
-          <div class="hidden mr-3 -mb-1 sm:block">
-            <a
-              class="github-button"
-              href="https://github.com/themesberg/flowbite-admin-dashboard"
-              data-color-scheme="no-preference: dark; light: light; dark: light;"
-              data-icon="octicon-star"
-              data-size="large"
-              data-show-count="true"
-              aria-label="Star themesberg/flowbite-admin-dashboard on GitHub"
-              >Star</a
-            >
-          </div>
           <!-- Search mobile -->
           <button
             id="toggleSidebarMobileSearch"
@@ -682,13 +675,13 @@ const user = computed(() => page.props?.auth?.user || null)
             >
               <div class="px-4 py-3" role="none">
                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                  Neil Sims
+                  {{ user.name }}
                 </p>
                 <p
                   class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                   role="none"
                 >
-                  neil.sims@flowbite.com
+                  {{ user.email }}
                 </p>
               </div>
               <ul class="py-1" role="none">
@@ -717,12 +710,14 @@ const user = computed(() => page.props?.auth?.user || null)
                   >
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                  <Link
+                    :href="route('logout')"
+                    method="post"
+                    class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Sign out</a
                   >
+                    Logout
+                  </Link>
                 </li>
               </ul>
             </div>

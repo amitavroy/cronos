@@ -19,6 +19,7 @@
         "@inertiajs/vue3": "^2.0.0-beta.2",
         "@vitejs/plugin-vue": "^5.2.1",
         "flowbite": "^2.5.2",
-        "vue": "^3.5.13"
+        "vue": "^3.5.13",
+        "ziggy-js": "^2.4.1"
     }
 }
