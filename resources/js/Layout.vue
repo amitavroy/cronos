@@ -15,9 +15,7 @@ import Footer from './Components/Footer.vue'
         class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-64 dark:bg-gray-900"
       >
         <main>
-          <div class="px-4 pt-6">
-            <slot></slot>
-          </div>
+          <slot></slot>
         </main>
         <Footer />
       </div>
