@@ -3,6 +3,8 @@ import ProductTable from './ProductTable.vue'
 import Breadcrumb from '../../Components/Breadcrumb.vue'
 import PageTitle from '../../Components/PageTitle.vue'
 import Icon from '../../Components/Icon.vue'
+
+const { products } = defineProps({ products: Object })
 </script>
 
 <template>
@@ -76,6 +78,6 @@ import Icon from '../../Components/Icon.vue'
       </div>
     </div>
 
-    <ProductTable />
+    <ProductTable :products="products" />
   </div>
 </template>

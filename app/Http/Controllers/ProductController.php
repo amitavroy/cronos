@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+
 class ProductController extends Controller
 {
     public function index()
     {
-        return inertia('Product/Index');
+        $products = Product::orderByDesc('id')
+            ->paginate();
+
+        return inertia('Product/Index')
+            ->with('products', $products);
     }
 }

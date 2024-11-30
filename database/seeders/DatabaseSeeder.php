@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,5 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'reachme@amitavroy.com',
             'password' => bcrypt('Password@123'),
         ]);
+
+        Product::factory(30)->create();
     }
 }

@@ -1,3 +1,11 @@
+<script setup>
+import Pagination from '../../Components/Pagination.vue'
+
+const { products } = defineProps({
+  products: Object,
+})
+</script>
+
 <template>
   <table
     class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600"
@@ -49,12 +57,6 @@
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          Discount
-        </th>
-        <th
-          scope="col"
-          class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
-        >
           Actions
         </th>
       </tr>
@@ -62,7 +64,11 @@
     <tbody
       class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
     >
-      <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+      <tr
+        class="hover:bg-gray-100 dark:hover:bg-gray-700"
+        v-if="products?.data && products.data.length > 0"
+        v-for="product in products?.data"
+      >
         <td class="w-4 p-4">
           <div class="flex items-center">
             <input
@@ -78,36 +84,31 @@
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
           <div class="text-base font-semibold text-gray-900 dark:text-white">
-            Name
+            {{ product.name }}
           </div>
           <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Category
+            {{ product.category }}
           </div>
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          Tech
+          {{ product.category }}
         </td>
         <td
           class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
         >
-          Description
+          {{ product.description }}
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          #id
+          #{{ product.id }}
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          Price
-        </td>
-        <td
-          class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          Disc
+          {{ product.price }}
         </td>
 
         <td class="p-4 space-x-2 whitespace-nowrap">
@@ -164,4 +165,8 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="p-4 bg-white w-full flex justify-center">
+    <Pagination :links="products.links" />
+  </div>
 </template>
