@@ -13,12 +13,12 @@ const sidebarMenuItems = [
     ],
   },
   {
-    parent: 'Expense',
+    parent: 'Product',
     iconName: 'layout',
     subMenu: true,
     subItems: [
-      { name: 'Add', href: route('login') },
-      { name: 'View', href: route('login') },
+      { name: 'Add', href: route('product.create') },
+      { name: 'View', href: route('product.index') },
     ],
   },
 ]

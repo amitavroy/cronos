@@ -153,7 +153,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="flex-shrink-0">
                   <img
                     class="rounded-full w-11 h-11"
-                    src="/images/users/bonnie-green.png"
+                    src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green.png"
                     alt="Jese image"
                   />
                   <div
@@ -197,7 +197,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="flex-shrink-0">
                   <img
                     class="rounded-full w-11 h-11"
-                    src="/images/users/jese-leos.png"
+                    src="https://flowbite-admin-dashboard.vercel.app/images/users/jese-leos.png"
                     alt="Jese image"
                   />
                   <div
@@ -242,7 +242,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="flex-shrink-0">
                   <img
                     class="rounded-full w-11 h-11"
-                    src="/images/users/joseph-mcfall.png"
+                    src="https://flowbite-admin-dashboard.vercel.app/images/users/joseph-mcfall.png"
                     alt="Joseph image"
                   />
                   <div
@@ -289,7 +289,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="flex-shrink-0">
                   <img
                     class="rounded-full w-11 h-11"
-                    src="/images/users/leslie-livingston.png"
+                    src="https://flowbite-admin-dashboard.vercel.app/images/users/leslie-livingston.png"
                     alt="Leslie image"
                   />
                   <div
@@ -337,7 +337,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="flex-shrink-0">
                   <img
                     class="rounded-full w-11 h-11"
-                    src="/images/users/robert-brown.png"
+                    src="https://flowbite-admin-dashboard.vercel.app/images/users/robert-brown.png"
                     alt="Robert image"
                   />
                   <div
