@@ -7,6 +7,7 @@ use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,14 +16,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+        User::updateOrCreate([
+            'email' => 'reachme@amitavroy.com',
+        ], [
             'name' => 'Amitav Roy',
             'email' => 'reachme@amitavroy.com',
             'password' => bcrypt('Password@123'),
         ]);
 
-        Product::factory(30)->create();
+        DB::table('products')->truncate();
+        $data = file_get_contents(database_path('./seeders/products.json'));
+        $products = collect(json_decode($data, true));
+        $products->each(function ($product) {
+            Product::create([
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'category' => $product['technology'],
+                'description' => $product['description'],
+            ]);
+        });
     }
 }
