@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/vue3'
 import Icon from './Icon.vue'
 
 const { menuObject } = defineProps({
@@ -39,11 +40,12 @@ const dropDownId = menuObject.parent
     </button>
     <ul :id="dropDownId" class="hidden py-2 space-y-2">
       <li v-for="item in menuObject.subItems">
-        <a
+        <Link
           :href="item.href"
           class="flex items-center p-2 text-base text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-          >{{ item.name }}</a
         >
+          {{ item.name }}
+        </Link>
       </li>
     </ul>
   </li>
