@@ -1,10 +1,17 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link, router } from '@inertiajs/vue3'
 import Pagination from '../../Components/Pagination.vue'
+import { ref } from 'vue'
 
 const { products } = defineProps({
   products: Object,
 })
+
+function deleteProduct(productId) {
+  if (confirm('Sure you delete this product?')) {
+    router.delete(route('product.destroy', { product: productId }))
+  }
+}
 </script>
 
 <template>
@@ -85,9 +92,9 @@ const { products } = defineProps({
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
           <div class="text-base font-semibold text-gray-900 dark:text-white">
-            <Link :href="route('product.show', { product: product.id })">{{
-              product.name
-            }}</Link>
+            <Link :href="route('product.show', { product: product.id })"
+              >{{ product.name }}
+            </Link>
           </div>
           <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
             {{ product.category }}
@@ -115,13 +122,9 @@ const { products } = defineProps({
         </td>
 
         <td class="p-4 space-x-2 whitespace-nowrap">
-          <button
-            type="button"
+          <Link
+            :href="route('product.show', { product: product.id })"
             id="updateProductButton"
-            data-drawer-target="drawer-update-product-default"
-            data-drawer-show="drawer-update-product-default"
-            aria-controls="drawer-update-product-default"
-            data-drawer-placement="right"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <svg
@@ -140,14 +143,11 @@ const { products } = defineProps({
               ></path>
             </svg>
             Update
-          </button>
+          </Link>
           <button
+            @click="deleteProduct(product.id)"
             type="button"
             id="deleteProductButton"
-            data-drawer-target="drawer-delete-product-default"
-            data-drawer-show="drawer-delete-product-default"
-            aria-controls="drawer-delete-product-default"
-            data-drawer-placement="right"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
           >
             <svg

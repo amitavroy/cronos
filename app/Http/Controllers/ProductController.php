@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(): Response|ResponseFactory
     {
         $products = Product::orderByDesc('id')
             ->paginate();
@@ -16,7 +19,7 @@ class ProductController extends Controller
             ->with('products', $products);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $postData = $request->validate([
             'name' => 'required|min:3',
@@ -30,13 +33,20 @@ class ProductController extends Controller
         return to_route('product.index');
     }
 
-    public function create()
+    public function create(): Response|ResponseFactory
     {
         return inertia('Product/Create');
     }
 
-    public function show(Product $product)
+    public function show(Product $product): Response|ResponseFactory
     {
         return inertia('Product/Show', ['product' => $product]);
+    }
+
+    public function destroy(Product $product): RedirectResponse
+    {
+        $product->delete();
+
+        return redirect()->back();
     }
 }
