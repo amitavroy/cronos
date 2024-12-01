@@ -118,7 +118,7 @@ function deleteProduct(productId) {
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {{ product.price }}
+          ₹{{ product.price }}
         </td>
 
         <td class="p-4 space-x-2 whitespace-nowrap">

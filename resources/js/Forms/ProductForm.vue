@@ -2,7 +2,7 @@
 import { useForm } from '@inertiajs/vue3'
 import InputText from '../Components/InputText.vue'
 
-const { initialData, url } = defineProps({
+const { initialData, url, isCreate } = defineProps({
   initialData: {
     type: Object,
     default: () => ({}),
@@ -10,6 +10,10 @@ const { initialData, url } = defineProps({
   url: {
     type: String,
     required: true,
+  },
+  isCreate: {
+    type: Boolean,
+    default: true,
   },
 })
 
@@ -21,7 +25,7 @@ const form = useForm({
 })
 
 function submit() {
-  form.post(url)
+  isCreate ? form.post(url) : form.patch(url)
 }
 </script>
 

@@ -31,7 +31,11 @@ const breadCrumb = [
 
     <div class="w-1/2">
       <ContentCard>
-        <ProductForm :initial-data="product" />
+        <ProductForm
+          :initial-data="product"
+          :url="route('product.update', { product: product.id })"
+          :is-create="false"
+        />
       </ContentCard>
     </div>
   </div>

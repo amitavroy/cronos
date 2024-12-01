@@ -43,6 +43,20 @@ class ProductController extends Controller
         return inertia('Product/Show', ['product' => $product]);
     }
 
+    public function update(Product $product, Request $request)
+    {
+        $postData = $request->validate([
+            'name' => 'required|min:3',
+            'price' => 'numeric|min:1',
+            'category' => 'required|min:2',
+            'description' => 'required|min:3',
+        ]);
+
+        $product->update($postData);
+
+        return to_route('product.show', ['product' => $product]);
+    }
+
     public function destroy(Product $product): RedirectResponse
     {
         $product->delete();

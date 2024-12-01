@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $products->each(function ($product) {
             Product::create([
                 'name' => $product['name'],
-                'price' => $product['price'],
+                'price' => str_replace('$', '', $product['price']),
                 'category' => $product['technology'],
                 'description' => $product['description'],
             ]);
