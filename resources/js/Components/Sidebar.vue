@@ -4,21 +4,21 @@ import SidebarDropdown from './SidebarDropdown.vue'
 
 const sidebarMenuItems = [
   {
-    parent: 'Tasks',
-    iconName: 'docs',
-    subMenu: true,
-    subItems: [
-      { name: 'Tasks', href: route('login') },
-      { name: 'Notes', href: route('login') },
-    ],
-  },
-  {
     parent: 'Product',
     iconName: 'layout',
     subMenu: true,
     subItems: [
       { name: 'Add', href: route('product.create') },
       { name: 'View', href: route('product.index') },
+    ],
+  },
+  {
+    parent: 'Users',
+    iconName: 'users',
+    subMenu: true,
+    subItems: [
+      { name: 'View', href: route('user.index') },
+      { name: 'Add', href: route('user.create') },
     ],
   },
 ]
