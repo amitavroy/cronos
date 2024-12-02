@@ -16,12 +16,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory(10)->create();
+        
         User::updateOrCreate([
             'email' => 'reachme@amitavroy.com',
         ], [
             'name' => 'Amitav Roy',
             'email' => 'reachme@amitavroy.com',
             'password' => bcrypt('Password@123'),
+            'position' => 'Solutions Architect',
+            'country' => 'India'
         ]);
 
         DB::table('products')->truncate();

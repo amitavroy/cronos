@@ -1,16 +1,10 @@
 <script setup>
-import { Link, router } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 import Pagination from '../../Components/Pagination.vue'
 
-const { products } = defineProps({
-  products: Object,
+const { users } = defineProps({
+  users: Object,
 })
-
-function deleteProduct(productId) {
-  if (confirm('Sure you delete this product?')) {
-    router.delete(route('product.destroy', { product: productId }))
-  }
-}
 </script>
 
 <template>
@@ -19,34 +13,23 @@ function deleteProduct(productId) {
   >
     <thead class="bg-gray-100 dark:bg-gray-700">
       <tr>
-        <th scope="col" class="p-4">
-          <div class="flex items-center">
-            <input
-              id="checkbox-all"
-              aria-describedby="checkbox-1"
-              type="checkbox"
-              class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label for="checkbox-all" class="sr-only">checkbox</label>
-          </div>
+        <th
+          scope="col"
+          class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
+        >
+          Name
         </th>
         <th
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          Product Name
+          Position
         </th>
         <th
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          Technology
-        </th>
-        <th
-          scope="col"
-          class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
-        >
-          Description
+          Country
         </th>
         <th
           scope="col"
@@ -58,72 +41,47 @@ function deleteProduct(productId) {
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          Price
-        </th>
-        <th
-          scope="col"
-          class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
-        >
           Actions
         </th>
       </tr>
     </thead>
-    <tbody
-      class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
-    >
+    <tbody>
       <tr
         class="hover:bg-gray-100 dark:hover:bg-gray-700"
-        v-if="products?.data && products.data.length > 0"
-        v-for="product in products?.data"
+        v-if="users?.data && users.data.length > 0"
+        v-for="user in users?.data"
       >
-        <td class="w-4 p-4">
-          <div class="flex items-center">
-            <input
-              id="checkbox-XX"
-              aria-describedby="checkbox-1"
-              type="checkbox"
-              class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label for="checkbox-XX" class="sr-only">checkbox</label>
-          </div>
-        </td>
         <td
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
           <div class="text-base font-semibold text-gray-900 dark:text-white">
-            <Link :href="route('product.show', { product: product.id })"
-              >{{ product.name }}
+            <Link :href="route('user.show', { user: user.id })"
+              >{{ user.name }}
             </Link>
           </div>
           <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-            {{ product.category }}
+            {{ user.email }}
           </div>
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {{ product.category }}
-        </td>
-        <td
-          class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
-        >
-          {{ product.description }}
+          {{ user.position }}
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          #{{ product.id }}
+          {{ user.country }}
         </td>
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          ₹{{ product.price }}
+          {{ user.id }}
         </td>
-
-        <td class="p-4 space-x-2 whitespace-nowrap">
+        <td class="p-4 space-x-2 whitespace-nowrap text-right">
           <Link
-            :href="route('product.show', { product: product.id })"
-            id="updateProductButton"
+            :href="route('user.show', { user: user.id })"
+            id="updateUserButton"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <svg
@@ -144,7 +102,6 @@ function deleteProduct(productId) {
             Update
           </Link>
           <button
-            @click="deleteProduct(product.id)"
             type="button"
             id="deleteProductButton"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-900"
@@ -169,6 +126,6 @@ function deleteProduct(productId) {
   </table>
 
   <div class="p-4 bg-white w-full flex justify-center">
-    <Pagination :links="products.links" />
+    <Pagination :links="users.links" />
   </div>
 </template>
