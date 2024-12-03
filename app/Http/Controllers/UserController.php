@@ -17,12 +17,24 @@ class UserController extends Controller
             ->with('users', $users);
     }
 
-    public function create()
+    public function create(): Response|ResponseFactory
     {
+        return inertia('User/Create');
     }
 
     public function store(Request $request)
     {
+        $postData = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+            'position' => 'required|min:3',
+            'country' => 'required|min:3',
+        ]);
+
+        User::create($postData);
+
+        return to_route('user.index');
     }
 
     public function show($id)
