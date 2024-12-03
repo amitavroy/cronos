@@ -45,6 +45,7 @@ function submit() {
       :error-message="form.errors?.email"
     />
     <InputText
+      v-if="isCreate"
       v-model="form.password"
       name="User password"
       placeholder="Enter user's password"

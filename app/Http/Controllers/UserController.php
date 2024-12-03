@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
@@ -37,19 +38,28 @@ class UserController extends Controller
         return to_route('user.index');
     }
 
-    public function show($id)
+    public function show(User $user): Response|ResponseFactory
     {
+        return inertia('User/Show')->with('user', $user);
     }
 
-    public function edit($id)
+    public function update(Request $request, User $user): Response|ResponseFactory
     {
+        $postData = $request->validate([
+            'name' => 'required|min:3',
+            'position' => 'required|min:3',
+            'country' => 'required|min:3',
+        ]);
+
+        User::where('id', $user->id)->update($postData);
+
+        return to_route('user.show', ['user' => $user]);
     }
 
-    public function update(Request $request, $id)
+    public function destroy(User $user): RedirectResponse
     {
-    }
+        $user->delete();
 
-    public function destroy($id)
-    {
+        return redirect()->back();
     }
 }
