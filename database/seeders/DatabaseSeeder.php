@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         
         User::updateOrCreate([
-            'email' => 'reachme@amitavroy.com',
+            'email' => config('app.default_credentials.email'),
         ], [
             'name' => 'Amitav Roy',
-            'email' => 'reachme@amitavroy.com',
-            'password' => bcrypt('Password@123'),
+            'email' => config('app.default_credentials.email'),
+            'password' => bcrypt(config('app.default_credentials.password')),
             'position' => 'Solutions Architect',
             'country' => 'India'
         ]);
