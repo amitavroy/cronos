@@ -8,8 +8,8 @@ const sidebarMenuItems = [
     iconName: 'layout',
     subMenu: true,
     subItems: [
-      { name: 'Add', href: route('product.create') },
       { name: 'View', href: route('product.index') },
+      { name: 'Add', href: route('product.create') },
     ],
   },
   {

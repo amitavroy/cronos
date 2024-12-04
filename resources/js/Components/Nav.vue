@@ -503,8 +503,8 @@ const user = computed(() => page.props?.auth?.user || null)
                   Profile
                 </div>
               </a>
-              <a
-                href="#"
+              <Link
+                :href="route('user-setting.show')"
                 class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 <svg
@@ -522,7 +522,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <div class="text-sm font-medium text-gray-900 dark:text-white">
                   Settings
                 </div>
-              </a>
+              </Link>
               <a
                 href="#"
                 class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -694,12 +694,12 @@ const user = computed(() => page.props?.auth?.user || null)
                   >
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    :href="route('user-setting.show')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Settings</a
-                  >
+                    >Settings
+                  </Link>
                 </li>
                 <li>
                   <a
