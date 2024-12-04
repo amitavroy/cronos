@@ -1,10 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { useForm } from '@inertiajs/vue3'
 import InputText from '../Components/InputText.vue'
+import { IInitialProductData } from '../types'
 
 const { initialData, url, isCreate } = defineProps({
   initialData: {
-    type: Object,
+    type: Object as () => IInitialProductData,
     default: () => ({}),
   },
   url: {
