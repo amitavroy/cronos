@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class UserSettingController extends Controller
 {
-    public function show()
+    public function show(): Response|ResponseFactory
     {
         $user = Auth::user();
 
@@ -16,8 +18,15 @@ class UserSettingController extends Controller
             ->with('user', $user);
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $postData = $request->validate([
+            'name' => 'required',
+            'position' => 'required',
+            'country' => 'required',
+        ]);
+
+        User::where('id', $request->user()->id)
+            ->update($postData);
     }
 }
