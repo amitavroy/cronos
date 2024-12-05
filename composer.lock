@@ -1060,12 +1060,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "166f25a14167b2caa4205c94af068403befac87e"
+                "reference": "f557ed3781500bad1a40bd02e1ece98d570b43c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/166f25a14167b2caa4205c94af068403befac87e",
-                "reference": "166f25a14167b2caa4205c94af068403befac87e",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/f557ed3781500bad1a40bd02e1ece98d570b43c0",
+                "reference": "f557ed3781500bad1a40bd02e1ece98d570b43c0",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1129,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-20T18:44:57+00:00"
+            "time": "2024-12-03T18:06:33+00:00"
         },
         {
             "name": "laravel/framework",
@@ -6662,16 +6662,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v3.5.2",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "982353fb38703518c1370d420733a7b61ebc997f"
+                "reference": "918a8fc16996849937e281482bd34f236881ce96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/982353fb38703518c1370d420733a7b61ebc997f",
-                "reference": "982353fb38703518c1370d420733a7b61ebc997f",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/918a8fc16996849937e281482bd34f236881ce96",
+                "reference": "918a8fc16996849937e281482bd34f236881ce96",
                 "shasum": ""
             },
             "require": {
@@ -6758,7 +6758,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v3.5.2"
+                "source": "https://github.com/pestphp/pest/tree/v3.6.0"
             },
             "funding": [
                 {
@@ -6770,7 +6770,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-01T21:28:14+00:00"
+            "time": "2024-12-01T22:46:00+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
@@ -8936,6 +8936,6 @@
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
