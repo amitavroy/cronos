@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPasswordChangeController;
 use App\Http\Controllers\UserSettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/user/profile', [UserSettingController::class, 'show'])->name('user-profile.show');
     Route::post('/user/profile', [UserSettingController::class, 'update'])->name('user-profile.update');
+    Route::post('/user/password-change', UserPasswordChangeController::class)->name('user.password.change');
     Route::resource('/user', UserController::class);
 
     Route::resource('/product', ProductController::class);
