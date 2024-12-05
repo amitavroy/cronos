@@ -14,7 +14,7 @@ describe('User password change tests', function () {
         $postData = [
             'password' => 'some-random-text',
             'password_confirmation' => 'some-random-text',
-            'old_password' => 'old_password',
+            'current_password' => 'old_password',
         ];
 
         post(route('user.password.change'), $postData);
@@ -26,12 +26,12 @@ describe('User password change tests', function () {
         ));
     });
 
-    it('requires new confirm and old password', function () {
+    it('requires new confirm and current password', function () {
         $user = User::factory()->create(['password' => bcrypt('old_password')]);
         actingAs($user);
 
         post(route('user.password.change'), [])
-            ->assertSessionHasErrors(['password', 'old_password']);
+            ->assertSessionHasErrors(['password', 'current_password']);
     });
 
     it('does not allow the current password as new password', function () {
@@ -40,7 +40,7 @@ describe('User password change tests', function () {
         $postData = [
             'password' => 'some-random-text',
             'password_confirmation' => 'some-random-text',
-            'old_password' => 'some-random-text',
+            'current_password' => 'some-random-text',
         ];
 
         post(route('user.password.change'), $postData)
@@ -53,7 +53,7 @@ describe('User password change tests', function () {
         $postData = [
             'password' => 'some-random-text',
             'password_confirmation' => 'some-random-text-different',
-            'old_password' => 'some-random-text-old',
+            'current_password' => 'some-random-text-old',
         ];
 
         post(route('user.password.change'), $postData)
