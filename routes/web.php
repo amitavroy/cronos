@@ -14,9 +14,10 @@ Route::post('/login', [LoginController::class, 'store'])->name('do-login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', HomeController::class)->name('home');
     Route::post('/logout', LogoutController::class)->name('logout');
-    Route::get('/settings', [UserSettingController::class, 'show'])->name('user-setting.show');
-    Route::post('/settings', [UserSettingController::class, 'update'])->name('user-setting.update');
 
+    Route::get('/user/profile', [UserSettingController::class, 'show'])->name('user-profile.show');
+    Route::post('/user/profile', [UserSettingController::class, 'update'])->name('user-profile.update');
     Route::resource('/user', UserController::class);
+
     Route::resource('/product', ProductController::class);
 });

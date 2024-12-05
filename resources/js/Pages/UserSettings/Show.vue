@@ -24,7 +24,7 @@ const form = useForm({
 })
 
 function submit() {
-  form.post(route('user-setting.update'))
+  form.post(route('user-profile.update'))
 }
 </script>
 

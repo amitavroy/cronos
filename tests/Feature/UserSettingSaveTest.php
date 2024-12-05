@@ -19,7 +19,7 @@ describe('Testing the user setting page save', function () {
         ];
 
         post(
-            uri: route('user-setting.update'),
+            uri: route('user-profile.update'),
             data: $postData
         );
 
@@ -31,7 +31,7 @@ describe('Testing the user setting page save', function () {
         actingAs($user);
 
         post(
-            uri: route('user-setting.update'),
+            uri: route('user-profile.update'),
             data: []
         )->assertSessionHasErrors(['name', 'position', 'country']);
     });

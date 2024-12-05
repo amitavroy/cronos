@@ -504,7 +504,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 </div>
               </a>
               <Link
-                :href="route('user-setting.show')"
+                :href="route('user-profile.show')"
                 class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 <svg
@@ -695,10 +695,10 @@ const user = computed(() => page.props?.auth?.user || null)
                 </li>
                 <li>
                   <Link
-                    :href="route('user-setting.show')"
+                    :href="route('user-profile.show')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Settings
+                    >Profile
                   </Link>
                 </li>
                 <li>
