@@ -16,8 +16,8 @@ describe('User create tests', function () {
             'name' => fake()->name(),
             'email' => fake()->unique()->email(),
             'password' => fake()->password(8),
-            'position' => fake()->word(),
-            'country' => fake()->country(),
+            'position' => fake()->word(5),
+            'country' => fake()->country(5),
         ];
 
         post(route('user.store'), $postData);
@@ -43,8 +43,8 @@ describe('User create tests', function () {
             'name' => fake()->name(),
             'email' => fake()->unique()->email(),
             'password' => fake()->password(8),
-            'position' => fake()->word(),
-            'country' => fake()->country(),
+            'position' => fake()->word(5),
+            'country' => fake()->country(5),
         ];
 
         post(route('user.store'), $postData)
@@ -60,8 +60,8 @@ describe('User update tests', function () {
 
         $postData = [
             'name' => fake()->name(),
-            'position' => fake()->word(),
-            'country' => fake()->country(),
+            'position' => fake()->word(5),
+            'country' => fake()->country(5),
         ];
 
         patch(route('user.update', ['user' => $user]), $postData);
@@ -89,8 +89,8 @@ describe('User update tests', function () {
 
         $postData = [
             'name' => fake()->name(),
-            'position' => fake()->word(),
-            'country' => fake()->country(),
+            'position' => fake()->word(5),
+            'country' => fake()->country(5),
         ];
 
         patch(route('user.update', ['user' => $user2]), $postData);
