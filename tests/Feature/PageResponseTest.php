@@ -53,6 +53,15 @@ describe('Testing all page response', function () {
         get(route('user.show', ['user' => $user]))->assertOk();
     });
 
+    it('loads the user add page for auth user', function () {
+        $this->withoutVite();
+        $user = User::factory()->create();
+
+        actingAs($user);
+
+        get(route('user.create'))->assertOk();
+    });
+
     it('loads the profile page', function () {
         $this->withoutVite();
         $user = User::factory()->create();

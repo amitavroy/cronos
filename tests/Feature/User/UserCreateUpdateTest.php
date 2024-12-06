@@ -38,18 +38,20 @@ describe('User create tests', function () {
 
     it('redirects user to listing', function () {
         $user = User::factory()->create();
+
         actingAs($user);
+
         $postData = [
             'name' => fake()->name(),
             'email' => fake()->unique()->email(),
             'password' => fake()->password(8),
-            'position' => fake()->word(5),
+            'position' => fake()->word(6),
             'country' => fake()->country(5),
         ];
 
         post(route('user.store'), $postData)
             ->assertRedirectToRoute('user.index');
-    });
+    })->only();
 });
 
 describe('User update tests', function () {
@@ -83,7 +85,6 @@ describe('User update tests', function () {
 
     it('redirects to the user detail view', function () {
         $user = User::factory()->create();
-        $user2 = User::factory()->create();
 
         actingAs($user);
 
@@ -93,10 +94,10 @@ describe('User update tests', function () {
             'country' => fake()->country(5),
         ];
 
-        patch(route('user.update', ['user' => $user2]), $postData);
+        patch(route('user.update', ['user' => $user]), $postData);
 
         $this->assertDatabaseHas('users', array_merge(
-            ['id' => $user2->id],
+            ['id' => $user->id],
             $postData
         ));
     });
