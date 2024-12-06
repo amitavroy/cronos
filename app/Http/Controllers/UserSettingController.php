@@ -28,5 +28,9 @@ class UserSettingController extends Controller
 
         User::where('id', $request->user()->id)
             ->update($postData);
+
+        return redirect()
+            ->to(route('user-profile.show'))
+            ->with('success', 'Profile updated');
     }
 }
