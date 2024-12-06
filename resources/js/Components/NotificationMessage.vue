@@ -7,12 +7,12 @@ export default {
     },
     duration: {
       type: Number,
-      default: 5000, // 5 seconds
+      default: 1000,
     },
   },
   data() {
     return {
-      visible: false, // Initially hidden
+      visible: false,
       timeout: null,
     }
   },
@@ -58,7 +58,6 @@ export default {
 </template>
 
 <style scoped>
-/* Optional: Add smoother fade-out effects */
 .transition-opacity {
   transition: opacity 0.5s ease-in-out;
 }
