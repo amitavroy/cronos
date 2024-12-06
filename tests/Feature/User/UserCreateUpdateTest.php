@@ -51,7 +51,7 @@ describe('User create tests', function () {
 
         post(route('user.store'), $postData)
             ->assertRedirectToRoute('user.index');
-    })->only();
+    });
 });
 
 describe('User update tests', function () {
