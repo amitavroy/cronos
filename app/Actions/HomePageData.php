@@ -10,6 +10,9 @@ use App\Models\User;
 
 class HomePageData
 {
+    /**
+     * @return array<string, int|string>
+     */
     public function handle(): array
     {
         return [

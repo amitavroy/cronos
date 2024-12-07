@@ -10,7 +10,8 @@ uses(RefreshDatabase::class);
 
 describe('HomePageData tests', function () {
     it('gives the correct order count', function () {
-        User::factory(5)->create();
+        User::factory(10)->create();
+
         app(CreateRandomOrder::class)->handle(10);
 
         $homePageData = app(HomePageData::class)->handle();

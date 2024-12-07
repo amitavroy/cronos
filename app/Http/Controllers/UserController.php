@@ -14,8 +14,9 @@ class UserController extends Controller
     {
         $users = User::orderByDesc('id')->paginate(10);
 
-        return inertia('User/Index')
-            ->with('users', $users);
+        return inertia('User/Index', [
+            'users' => $users,
+        ]);
     }
 
     public function create(): Response|ResponseFactory
@@ -23,7 +24,7 @@ class UserController extends Controller
         return inertia('User/Create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $postData = $request->validate([
             'name' => 'required|min:3',
@@ -40,7 +41,9 @@ class UserController extends Controller
 
     public function show(User $user): Response|ResponseFactory
     {
-        return inertia('User/Show')->with('user', $user);
+        return inertia('User/Show', [
+            'user' => $user
+        ]);
     }
 
     public function update(Request $request, User $user): RedirectResponse

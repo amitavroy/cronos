@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Response;
@@ -14,11 +15,12 @@ class UserSettingController extends Controller
     {
         $user = Auth::user();
 
-        return inertia('UserSettings/Show')
-            ->with('user', $user);
+        return inertia('UserSettings/Show', [
+            'user' => $user,
+        ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $postData = $request->validate([
             'name' => 'required',
