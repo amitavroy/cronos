@@ -10,7 +10,7 @@ uses(RefreshDatabase::class);
 
 describe('User create tests', function () {
     it('creates a user in db', function () {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
         actingAs($user);
         $postData = [
             'name' => fake()->name(),
@@ -30,20 +30,20 @@ describe('User create tests', function () {
     });
 
     it('needs all required fields', function () {
-        actingAs(User::factory()->create());
+        actingAs(User::factory()->admin()->create());
 
         post(route('user.store'), [])
             ->assertSessionHasErrors(['name', 'email', 'password', 'position', 'country']);
     });
 
     it('redirects user to listing', function () {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
         $postData = [
             'name' => fake()->name(),
-            'email' => fake()->unique()->email(),
+            'email' => fake()->unique()->safeEmail(),
             'password' => fake()->password(8),
             'position' => fake()->word(6),
             'country' => fake()->country(5),
@@ -56,7 +56,7 @@ describe('User create tests', function () {
 
 describe('User update tests', function () {
     it('updates the fields', function () {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
@@ -75,7 +75,7 @@ describe('User update tests', function () {
     });
 
     it('needs name position and country', function () {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
@@ -84,7 +84,7 @@ describe('User update tests', function () {
     });
 
     it('redirects to the user detail view', function () {
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
