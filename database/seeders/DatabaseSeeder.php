@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enum\UserRole;
 use App\Models\Product;
 use App\Models\User;
 
@@ -25,7 +26,8 @@ class DatabaseSeeder extends Seeder
             'email' => config('app.default_credentials.email'),
             'password' => bcrypt(config('app.default_credentials.password')),
             'position' => 'Solutions Architect',
-            'country' => 'India'
+            'country' => 'India',
+            'role' => UserRole::ADMIN->value,
         ]);
 
         DB::table('products')->truncate();

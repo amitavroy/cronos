@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enum\UserRole;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'position' => fake()->word(3),
             'country' => fake()->country(3),
+            'role' => fake()->randomElement(UserRole::values()),
         ];
     }
 
