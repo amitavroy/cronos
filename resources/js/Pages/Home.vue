@@ -3,8 +3,11 @@ import PageContainer from '../Components/PageContainer.vue'
 import Breadcrumb from '../Components/Breadcrumb.vue'
 import PageTitle from '../Components/PageTitle.vue'
 import StatsCard from '../Components/StatsCard.vue'
+import { usePage } from '@inertiajs/vue3'
 
 const breadCrumbs = []
+
+const { props } = usePage()
 </script>
 
 <template>
@@ -19,22 +22,22 @@ const breadCrumbs = []
         class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-3 2xl:grid-cols-3"
       >
         <StatsCard
-          title="New products"
-          stats="2,341"
+          title="Total products"
+          :stats="props.product_count"
           number="12.5%"
           message="Since last month"
           icon="layout"
         />
         <StatsCard
-          title="New users"
-          stats="2,341"
+          title="Total users"
+          :stats="props.user_count"
           number="11.5%"
           message="Since last month"
           icon="users"
         />
         <StatsCard
-          title="New customers"
-          stats="2,341"
+          title="Total customers"
+          :stats="props.customer_count"
           number="15.5%"
           message="Since last month"
           icon="users"

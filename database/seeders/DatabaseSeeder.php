@@ -30,6 +30,10 @@ class DatabaseSeeder extends Seeder
             'role' => UserRole::ADMIN->value,
         ]);
 
+        User::factory(10)->create([
+            'role' => UserRole::CUSTOMER->value,
+        ]);
+
         DB::table('products')->truncate();
         $data = file_get_contents(database_path('./seeders/products.json'));
         $products = collect(json_decode($data, true));

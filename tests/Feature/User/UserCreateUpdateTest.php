@@ -61,9 +61,9 @@ describe('User update tests', function () {
         actingAs($user);
 
         $postData = [
-            'name' => fake()->name(),
-            'position' => fake()->word(5),
-            'country' => fake()->country(5),
+            'name' => 'Jhon Doe',
+            'position' => 'Architect',
+            'country' => 'India'
         ];
 
         patch(route('user.update', ['user' => $user]), $postData);
