@@ -35,6 +35,11 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get orders for a user
+     *
+     * @return HasMany<Order, covariant $this>
+     */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
