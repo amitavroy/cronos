@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\patch;
 use function Pest\Laravel\post;
@@ -16,8 +17,8 @@ describe('User create tests', function () {
             'name' => fake()->name(),
             'email' => fake()->unique()->email(),
             'password' => fake()->password(8),
-            'position' => fake()->word(5),
-            'country' => fake()->country(5),
+            'position' => 'Architect',
+            'country' => 'India',
         ];
 
         post(route('user.store'), $postData);
@@ -45,8 +46,8 @@ describe('User create tests', function () {
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => fake()->password(8),
-            'position' => fake()->word(6),
-            'country' => fake()->country(5),
+            'position' => 'Architect',
+            'country' => 'India',
         ];
 
         post(route('user.store'), $postData)
@@ -63,7 +64,7 @@ describe('User update tests', function () {
         $postData = [
             'name' => 'Jhon Doe',
             'position' => 'Architect',
-            'country' => 'India'
+            'country' => 'India',
         ];
 
         patch(route('user.update', ['user' => $user]), $postData);
@@ -90,8 +91,8 @@ describe('User update tests', function () {
 
         $postData = [
             'name' => fake()->name(),
-            'position' => fake()->word(5),
-            'country' => fake()->country(5),
+            'position' => 'Architect',
+            'country' => 'India',
         ];
 
         patch(route('user.update', ['user' => $user]), $postData);

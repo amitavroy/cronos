@@ -29,8 +29,8 @@ const { props } = usePage()
           icon="layout"
         />
         <StatsCard
-          title="Total users"
-          :stats="props.user_count"
+          title="Total orders"
+          :stats="props.order_count"
           number="11.5%"
           message="Since last month"
           icon="users"

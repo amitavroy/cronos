@@ -43,7 +43,7 @@ class UserController extends Controller
         return inertia('User/Show')->with('user', $user);
     }
 
-    public function update(Request $request, User $user): Response|ResponseFactory
+    public function update(Request $request, User $user): RedirectResponse
     {
         $postData = $request->validate([
             'name' => 'required|min:3',

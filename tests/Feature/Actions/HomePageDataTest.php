@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\CreateRandomOrder;
 use App\Actions\HomePageData;
 use App\Models\Product;
 use App\Models\User;
@@ -8,12 +9,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 describe('HomePageData tests', function () {
-    it('gives the correct user count', function () {
-        User::factory(10)->create();
+    it('gives the correct order count', function () {
+        User::factory(5)->create();
+        app(CreateRandomOrder::class)->handle(10);
 
         $homePageData = app(HomePageData::class)->handle();
 
-        expect($homePageData['user_count'])->toBe(10);
+        expect($homePageData['order_count'])->toBe(10);
     });
 
     it('gives the correct customer count', function () {

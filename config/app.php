@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool)env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -130,6 +130,6 @@ return [
     'default_credentials' => [
         'email' => env('DEFAULT_EMAIL'),
         'password' => env('DEFAULT_PASSWORD'),
-    ]
+    ],
 
 ];

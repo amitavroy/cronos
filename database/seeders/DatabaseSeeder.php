@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Actions\CreateRandomOrder;
 use App\Enum\UserRole;
 use App\Models\Product;
 use App\Models\User;
-
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +34,13 @@ class DatabaseSeeder extends Seeder
             'role' => UserRole::CUSTOMER->value,
         ]);
 
+        $this->createProducts();
+
+        app(CreateRandomOrder::class)->handle(rand(10, 30));
+    }
+
+    private function createProducts(): void
+    {
         DB::table('products')->truncate();
         $data = file_get_contents(database_path('./seeders/products.json'));
         $products = collect(json_decode($data, true));
