@@ -23,26 +23,26 @@ class ProductPolicy
 
     public function create(User $user): bool
     {
-        return $user->role === UserRole::ADMIN->value || UserRole::MANAGER->value;
+        return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
     public function update(User $user, Product $product): bool
     {
-        return $user->role === UserRole::ADMIN->value || UserRole::MANAGER->value;
+        return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
     public function delete(User $user, Product $product): bool
     {
-        return $user->role === UserRole::ADMIN->value || UserRole::MANAGER->value;
+        return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
     public function restore(User $user, Product $product): bool
     {
-        return $user->role === UserRole::ADMIN->value || UserRole::MANAGER->value;
+        return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
     public function forceDelete(User $user, Product $product): bool
     {
-        return $user->role === UserRole::ADMIN->value || UserRole::MANAGER->value;
+        return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 }
