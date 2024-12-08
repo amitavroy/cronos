@@ -16,7 +16,7 @@ class HomePageData
     public function handle(): array
     {
         return [
-            'order_count' => Order::where('status', OrderStatus::COMPLETE->value)->count(),
+            'order_count' => Order::where('status', OrderStatus::COMPLETED->value)->count(),
             'customer_count' => User::where(['role' => UserRole::CUSTOMER->value])->count(),
             'product_count' => Product::count(),
         ];

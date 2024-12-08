@@ -13,7 +13,7 @@ class OrderService
      */
     public function getCompletedOrders(): LengthAwarePaginator
     {
-        return Order::where('status', OrderStatus::COMPLETE->value)
+        return Order::where('status', OrderStatus::COMPLETED->value)
             ->with('products', 'user:id,email,name,country')
             ->withCount('products')
             ->paginate(20);

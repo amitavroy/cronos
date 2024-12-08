@@ -22,7 +22,7 @@ class CreateRandomOrder
             $order = Order::create([
                 'user_id' => $user->id,
                 'total_amount' => 0, // Will be updated after adding items
-                'status' => OrderStatus::COMPLETE->value,
+                'status' => OrderStatus::COMPLETED->value,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
