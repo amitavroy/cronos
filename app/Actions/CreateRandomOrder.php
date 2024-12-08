@@ -15,6 +15,10 @@ class CreateRandomOrder
         for ($i = 0; $i < $count; $i++) {
             $user = User::where('role', 'customer')->inRandomOrder()->first();
 
+            if (!$user) {
+                break;
+            }
+
             $order = Order::create([
                 'user_id' => $user->id,
                 'total_amount' => 0, // Will be updated after adding items

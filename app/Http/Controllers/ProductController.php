@@ -15,8 +15,9 @@ class ProductController extends Controller
         $products = Product::orderByDesc('id')
             ->paginate();
 
-        return inertia('Product/Index')
-            ->with('products', $products);
+        return inertia('Product/Index', [
+            'products' => $products,
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -43,7 +44,7 @@ class ProductController extends Controller
         return inertia('Product/Show', ['product' => $product]);
     }
 
-    public function update(Product $product, Request $request)
+    public function update(Product $product, Request $request): RedirectResponse
     {
         $postData = $request->validate([
             'name' => 'required|min:3',

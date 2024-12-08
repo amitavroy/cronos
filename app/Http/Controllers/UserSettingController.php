@@ -22,14 +22,18 @@ class UserSettingController extends Controller
 
     public function update(Request $request): RedirectResponse
     {
-        $postData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'position' => 'required',
             'country' => 'required',
         ]);
 
-        User::where('id', $request->user()->id)
-            ->update($postData);
+        User::where('id', $request->user()?->id)
+            ->update([
+                'name' => $request->input('name'),
+                'position' => $request->input('position'),
+                'country' => $request->input('country'),
+            ]);
 
         return redirect()
             ->to(route('user-profile.show'))

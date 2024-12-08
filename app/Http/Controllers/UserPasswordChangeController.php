@@ -1,23 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserPasswordChangeRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserPasswordChangeController extends Controller
 {
-    public function __invoke(Request $request): RedirectResponse
+    public function __invoke(UserPasswordChangeRequest $request): RedirectResponse
     {
-        $request->validate([
-            'password' => 'required|string|min:6|confirmed|different:current_password',
-            'current_password' => 'required',
-        ]);
+        $data = $request->validated();
+        /** @var string $password */
+        $password = $data['password'];
 
-        $user = $request->user();
-
-        $user->password = $request->input('password');
-        $user->save();
+        User::where('id', $request->user()?->id)
+            ->update([
+                'password' => Hash::make($password),
+            ]);
 
         return to_route('user-profile.show');
     }
