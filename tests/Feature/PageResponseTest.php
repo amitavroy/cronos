@@ -71,4 +71,13 @@ describe('Testing all page response', function () {
 
         get(route('user-profile.show'))->assertOk();
     });
+
+    it('loads the orders page', function () {
+        $this->withoutVite();
+        $user = User::factory()->create();
+
+        actingAs($user);
+
+        get(route('orders.index'))->assertOk();
+    });
 });

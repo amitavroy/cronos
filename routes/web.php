@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordChangeController;
@@ -22,4 +23,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/user', UserController::class);
 
     Route::resource('/product', ProductController::class);
+    Route::resource('/orders', OrderController::class)->only(['index']);
 });
