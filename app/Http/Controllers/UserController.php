@@ -44,7 +44,7 @@ class UserController extends Controller
     public function show(User $user): Response|ResponseFactory
     {
         return inertia('User/Show', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
