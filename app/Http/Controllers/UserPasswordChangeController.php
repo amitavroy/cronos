@@ -13,9 +13,7 @@ class UserPasswordChangeController extends Controller
 {
     public function __invoke(UserPasswordChangeRequest $request): RedirectResponse
     {
-        $data = $request->validated();
-        /** @var string $password */
-        $password = $data['password'];
+        $password = type($request->password)->asString();
 
         User::where('id', $request->user()?->id)
             ->update([
