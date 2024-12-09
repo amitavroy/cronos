@@ -10,6 +10,8 @@ uses(RefreshDatabase::class);
 
 describe('Customer controller test', function () {
     it('loads the customers listing page', function () {
+        $this->withoutVite();
+
         User::factory()->customer()->create();
 
         actingAs(User::factory()->admin()->create());
