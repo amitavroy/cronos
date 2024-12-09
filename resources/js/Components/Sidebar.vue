@@ -10,7 +10,7 @@ const sidebarMenuItems = [
     subItems: [
       { name: 'View products', href: route('product.index') },
       { name: 'Add products', href: route('product.create') },
-      { name: 'View orders', href: route('orders.index') },
+      { name: 'View orders', href: route('order.index') },
     ],
   },
   {

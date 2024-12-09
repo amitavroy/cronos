@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -23,5 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/user', UserController::class);
 
     Route::resource('/product', ProductController::class);
-    Route::resource('/orders', OrderController::class)->only(['index']);
+    Route::resource('/customer', CustomerController::class);
+    Route::resource('/order', OrderController::class)->only(['index']);
 });
