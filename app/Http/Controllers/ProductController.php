@@ -10,6 +10,12 @@ use Inertia\ResponseFactory;
 
 class ProductController extends Controller
 {
+    private $baseRules = [
+        'name' => 'required|min:3',
+        'price' => 'numeric|min:1',
+        'category' => 'required|min:2',
+        'description' => 'required|min:5',
+    ];
     public function index(): Response|ResponseFactory
     {
         $products = Product::orderByDesc('id')
@@ -22,12 +28,7 @@ class ProductController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $postData = $request->validate([
-            'name' => 'required|min:3',
-            'price' => 'numeric|min:1',
-            'category' => 'required|min:2',
-            'description' => 'required|min:3',
-        ]);
+        $postData = $request->validate($this->baseRules);
 
         Product::create($postData);
 
@@ -46,12 +47,7 @@ class ProductController extends Controller
 
     public function update(Product $product, Request $request): RedirectResponse
     {
-        $postData = $request->validate([
-            'name' => 'required|min:3',
-            'price' => 'numeric|min:1',
-            'category' => 'required|min:2',
-            'description' => 'required|min:3',
-        ]);
+        $postData = $request->validate($this->baseRules);
 
         $product->update($postData);
 
