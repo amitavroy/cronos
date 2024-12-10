@@ -38,29 +38,10 @@ pipeline {
                         sh "${scannerHome}/bin/sonar-scanner \
                              -Dsonar.projectKey=cronos \
                              -Dsonar.projectName=cronos \
+                             -Dsonar.qualitygate.wait=true \
+                             -Dsonar.tests=tests \
                              -Dsonar.sources=. \
                              -Dsonar.projectVersion=1.0"
-                    }
-                }
-            }
-        }
-        stage('Quality Gate') {
-            agent {
-                docker {
-                    image 'sonarsource/sonar-scanner-cli:latest'
-                    args '--user root'
-                }
-            }
-            steps {
-                script {
-                    // Wait for SonarQube analysis to complete and check Quality Gate status
-                    timeout(time: 5, unit: 'MINUTES') {
-                        def qg = waitForQualityGate()
-                        if (qg.status != 'OK') {
-                            echo "Quality Gate failed: ${qg.status}"
-                            echo "Full Quality Gate details: ${qg}"
-                            error "Pipeline failed due to quality gate failure: ${qg.status}"
-                        }
                     }
                 }
             }
