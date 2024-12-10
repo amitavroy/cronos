@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Enum\UserRole;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class CustomerService
@@ -21,14 +21,15 @@ class CustomerService
     }
 
     /**
-     * @return Builder<User>
+     * @return Collection<int, User>
      */
-    public function getTopCustomers(): Builder
+    public function getTopCustomers(): Collection
     {
         return User::query()
             ->where('role', UserRole::CUSTOMER->value)
             ->withCount('orders')
             ->orderBy('orders_count', 'desc')
-            ->limit(5);
+            ->limit(5)
+            ->get();
     }
 }

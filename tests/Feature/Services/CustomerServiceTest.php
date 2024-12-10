@@ -3,7 +3,7 @@
 use App\Models\Order;
 use App\Models\User;
 use App\Services\CustomerService;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -54,7 +54,7 @@ describe('Customer service test to get top customers', function () {
         $customers = app(CustomerService::class)->getTopCustomers();
 
         expect($customers)
-            ->toBeInstanceOf(Builder::class)
+            ->toBeInstanceOf(Collection::class)
             ->and($customers->first()->name)->toBe($user2->name)
             ->and($customers->count())->toEqual(2);
     });
