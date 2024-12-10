@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 uses(RefreshDatabase::class);
 
-describe('OrderService tests', function () {
+describe('OrderService tests to get completed orders', function () {
     it('gives a paginated data', function () {
         Order::factory(10)->completed()->create();
 

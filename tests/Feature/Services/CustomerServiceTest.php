@@ -1,13 +1,15 @@
 <?php
 
+use App\Models\Order;
 use App\Models\User;
 use App\Services\CustomerService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 uses(RefreshDatabase::class);
 
-describe('Customer service tests', function () {
+describe('Customer service tests to get active customers', function () {
     it('gives a paginated data', function () {
         $customer = User::factory()->customer()->create();
 
@@ -38,5 +40,31 @@ describe('Customer service tests', function () {
             ->toBe($clark->name)
             ->and($list->last()->name)
             ->toEqual($zord->name);
+    });
+});
+
+describe('Customer service test to get top customers', function () {
+    it('gives top customers', function () {
+        $user1 = User::factory()->customer()->create();
+        Order::factory(2)->completed()->create(['user_id' => $user1->id]);
+
+        $user2 = User::factory()->customer()->create();
+        Order::factory(4)->completed()->create(['user_id' => $user2->id]);
+
+        $customers = app(CustomerService::class)->getTopCustomers();
+
+        expect($customers)
+            ->toBeInstanceOf(Builder::class)
+            ->and($customers->first()->name)->toBe($user2->name)
+            ->and($customers->count())->toEqual(2);
+    });
+
+    it('only gives customers', function () {
+        $user1 = User::factory()->customer()->create();
+        $user2 = User::factory()->admin()->create();
+
+        $customers = app(CustomerService::class)->getTopCustomers();
+
+        expect($customers->count())->toEqual(1);
     });
 });
