@@ -39,7 +39,6 @@ pipeline {
                              -Dsonar.projectKey=cronos \
                              -Dsonar.projectName=cronos \
                              -Dsonar.qualitygate.wait=true \
-                             -Dsonar.tests=tests \
                              -Dsonar.sources=. \
                              -Dsonar.projectVersion=1.0"
                     }
