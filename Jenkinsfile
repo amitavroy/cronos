@@ -1,6 +1,5 @@
 pipeline {
     agent none
-
     stages {
         stage('php test') {
             agent {
@@ -9,7 +8,6 @@ pipeline {
                     args '--user root'
                 }
             }
-
             steps {
                 sh '''
           cp .env.example .env && \
@@ -21,7 +19,6 @@ pipeline {
           '''
             }
         }
-
         stage('Code Analysis') {
             agent {
                 docker {
@@ -42,6 +39,13 @@ pipeline {
                              -Dsonar.sources=. \
                              -Dsonar.projectVersion=1.0"
                     }
+                }
+            }
+        }
+        stage('cleaning workspace') {
+            steps {
+                script {
+                    cleanWs()
                 }
             }
         }
