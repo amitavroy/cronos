@@ -10,11 +10,11 @@ use Inertia\ResponseFactory;
 class HomeController extends Controller
 {
     public function __invoke(
-        HomePageData $homePageData,
+        HomePageData    $homePageData,
         CustomerService $customerService
-    ): Response|ResponseFactory {
+    ): Response|ResponseFactory
+    {
         $data = $homePageData->handle();
-        logger($customerService->getTopCustomers());
 
         return inertia('Home/Index', [
             'order_count' => $data['order_count'],
