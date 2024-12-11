@@ -35,19 +35,28 @@ pipeline {
                         sh "${scannerHome}/bin/sonar-scanner \
                              -Dsonar.projectKey=cronos \
                              -Dsonar.projectName=cronos \
-                             -Dsonar.qualitygate.wait=true \
                              -Dsonar.sources=. \
                              -Dsonar.projectVersion=1.0"
                     }
                 }
             }
         }
-        stage('cleaning workspace') {
-            steps {
-                script {
-                    cleanWs()
-                }
-            }
+        stage('quality gate') {
+        steps {
+          script {
+             def qg = waitForQualityGate()
+               if (qg.status != 'OK') {
+               echo "Quality Gate failed: ${qg.status}"
+               echo "Full Quality Gate details: ${qg}"
+               error "Pipeline failed due to quality gate failure: ${qg.status}"
+          }
         }
+      }
+    }
+    post {
+      always {
+         cleanWs()
+      }
+    }
     }
 }
