@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Product;
 use App\Models\User;
 use App\Policies\ProductPolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -14,7 +14,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->viewAny($admin))->toBeTrue();
@@ -31,7 +31,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->view())->toBeTrue();
@@ -48,7 +48,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->create($admin))->toBeTrue();
@@ -65,7 +65,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->update($admin))->toBeTrue();
@@ -82,7 +82,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->delete($admin))->toBeTrue();
@@ -99,7 +99,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->restore($admin))->toBeTrue();
@@ -116,7 +116,7 @@ describe('Product policy test', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new ProductPolicy();
+        $policy = new ProductPolicy;
 
         actingAs($admin);
         expect($policy->forceDelete($admin))->toBeTrue();

@@ -1,10 +1,10 @@
 <?php
 
+use App\Actions\CreateRandomOrder;
 use App\Console\Commands\TestCreateOrderCommand;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
-use App\Actions\CreateRandomOrder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);

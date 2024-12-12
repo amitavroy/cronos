@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\Enum\UserRole;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

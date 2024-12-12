@@ -4,6 +4,7 @@ use App\Models\Order;
 use App\Models\User;
 use App\Policies\OrderPolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -13,7 +14,7 @@ describe('Test Order policy', function () {
         $admin = User::factory()->admin()->create();
         $manager = User::factory()->manager()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
 
         expect($policy->viewAny($admin))->toBeTrue()
             ->and($policy->viewAny($manager))->toBeTrue();
@@ -22,7 +23,7 @@ describe('Test Order policy', function () {
     it('denies for customer', function () {
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
 
         expect($policy->viewAny($customer))->toBeFalse();
     });
@@ -32,7 +33,7 @@ describe('Test Order policy', function () {
         $customer = User::factory()->customer()->create();
         $order = Order::factory()->create(['user_id' => $customer->id]);
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
 
         expect($policy->view($admin, $order))->toBeTrue()
             ->and($policy->view($customer, $order))->toBeTrue();
@@ -43,7 +44,7 @@ describe('Test Order policy', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
 
         actingAs($admin);
         expect($policy->create())->toBeTrue();
@@ -60,7 +61,7 @@ describe('Test Order policy', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
         $order = Order::factory()->create(['user_id' => $customer->id]);
 
         actingAs($admin);
@@ -78,7 +79,7 @@ describe('Test Order policy', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
         $order = Order::factory()->create(['user_id' => $customer->id]);
 
         actingAs($admin);
@@ -96,7 +97,7 @@ describe('Test Order policy', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
         $order = Order::factory()->create(['user_id' => $customer->id]);
 
         actingAs($admin);
@@ -114,7 +115,7 @@ describe('Test Order policy', function () {
         $manager = User::factory()->manager()->create();
         $customer = User::factory()->customer()->create();
 
-        $policy = new OrderPolicy();
+        $policy = new OrderPolicy;
 
         actingAs($admin);
         expect($policy->forceDelete($admin))->toBeTrue();

@@ -3,6 +3,7 @@
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\delete;
 use function Pest\Laravel\patch;
@@ -65,8 +66,8 @@ describe('Testing product update', function () {
             ->assertRedirectToRoute('product.show', ['product' => $product]);
 
         $this->assertDatabaseHas('products', [
-           'id' => $product->id,
-           'name' => $postData['name'],
+            'id' => $product->id,
+            'name' => $postData['name'],
         ]);
     });
 });
