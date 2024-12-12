@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Pest\Laravel\actingAs;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\patch;
 use function Pest\Laravel\post;
 
@@ -102,4 +103,15 @@ describe('User update tests', function () {
             $postData
         ));
     });
+});
+
+it('deletes a user', function () {
+    $user = User::factory()->admin()->create();
+    $toDelete = User::factory()->create();
+
+    actingAs($user);
+
+    delete(route('user.destroy', ['user' => $toDelete]));
+
+    expect(User::find($toDelete->id))->toBeNull();
 });

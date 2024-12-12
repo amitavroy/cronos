@@ -33,6 +33,6 @@ class LoginController extends Controller
             return to_route('home');
         }
 
-        return redirect()->back();
+        return to_route('login');
     }
 }
