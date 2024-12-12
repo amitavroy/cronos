@@ -7,16 +7,22 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
 use App\Models\User;
+use Exception;
+use Random\RandomException;
 
 class CreateRandomOrder
 {
+    /**
+     * @throws RandomException
+     * @throws Exception
+     */
     public function handle(int $count): void
     {
         for ($i = 0; $i < $count; $i++) {
             $user = User::where('role', 'customer')->inRandomOrder()->first();
 
             if (! $user) {
-                break;
+                throw new Exception('No user found');
             }
 
             $order = Order::create([
