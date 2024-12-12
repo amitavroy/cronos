@@ -1,7 +1,7 @@
 [
     {
         "name": "Education Dashboard",
-        "category": "Html templates",
+        "category": "HTML Templates",
         "technology": "Angular",
         "id": 194556,
         "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
@@ -9,210 +9,174 @@
         "discount": "No"
     },
     {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 623232,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
+        "name": "E-commerce Template",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194557,
+        "description": "A comprehensive e-commerce template built with Laravel and Bootstrap for seamless online store integration.",
+        "price": "$199",
+        "discount": "Yes"
+    },
+    {
+        "name": "Portfolio Website",
+        "category": "HTML Templates",
+        "technology": "React",
+        "id": 194558,
+        "description": "Create a stunning portfolio website with this modern and responsive template powered by React.",
+        "price": "$99",
+        "discount": "No"
+    },
+    {
+        "name": "Admin Dashboard",
+        "category": "HTML Templates",
+        "technology": "Vue",
+        "id": 194559,
+        "description": "Admin dashboard with 200+ components built using Vue.js and Vuetify for efficient development.",
         "price": "$129",
-        "discount": "10%"
+        "discount": "Yes"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
+        "name": "CRM Template",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194560,
+        "description": "A robust CRM template designed using Laravel and integrated with API support.",
+        "price": "$249",
+        "discount": "No"
+    },
+    {
+        "name": "Landing Page Template",
+        "category": "HTML Templates",
+        "technology": "HTML & CSS",
+        "id": 194561,
+        "description": "A simple yet elegant landing page template built with clean HTML and CSS.",
+        "price": "$49",
+        "discount": "Yes"
+    },
+    {
+        "name": "Blog Template",
+        "category": "HTML Templates",
+        "technology": "WordPress",
+        "id": 194562,
+        "description": "Responsive blog template perfect for personal and professional blogging.",
+        "price": "$79",
+        "discount": "Yes"
+    },
+    {
+        "name": "Task Management App",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194563,
+        "description": "A feature-rich task management template built with Laravel and Vue.js.",
+        "price": "$179",
+        "discount": "No"
+    },
+    {
+        "name": "Corporate Website",
+        "category": "HTML Templates",
         "technology": "Angular",
-        "id": 194356,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
+        "id": 194564,
+        "description": "Corporate website template designed for modern businesses using Angular.",
+        "price": "$199",
+        "discount": "Yes"
+    },
+    {
+        "name": "Medical Dashboard",
+        "category": "HTML Templates",
+        "technology": "React",
+        "id": 194565,
+        "description": "A medical dashboard template ideal for healthcare applications, built with React.",
+        "price": "$229",
         "discount": "No"
     },
     {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 323323,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
+        "name": "Online Course Platform",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194566,
+        "description": "Template for creating an online course platform, powered by Laravel and Tailwind CSS.",
+        "price": "$299",
         "discount": "No"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 994856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "25%"
+        "name": "Event Management Template",
+        "category": "HTML Templates",
+        "technology": "HTML & CSS",
+        "id": 194567,
+        "description": "An event management template with multiple layouts and calendar integrations.",
+        "price": "$89",
+        "discount": "Yes"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 194256,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "10%"
-    },
-    {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 623378,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 192856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "No"
-    },
-    {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 523323,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 191857,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 914856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "30%"
-    },
-    {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 633293,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 194556,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "No"
-    },
-    {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 623232,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
+        "name": "News Portal Template",
+        "category": "HTML Templates",
+        "technology": "WordPress",
+        "id": 194568,
+        "description": "A news portal template suitable for modern and dynamic news websites.",
         "price": "$129",
         "discount": "No"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
+        "name": "Travel Agency Template",
+        "category": "HTML Templates",
         "technology": "Angular",
-        "id": 194356,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "5%"
+        "id": 194569,
+        "description": "A template for travel agencies with booking integrations, built using Angular.",
+        "price": "$159",
+        "discount": "Yes"
     },
     {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 323323,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 994856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
+        "name": "Photography Portfolio",
+        "category": "HTML Templates",
+        "technology": "React",
+        "id": 194570,
+        "description": "Photography portfolio template with high-resolution gallery support, powered by React.",
         "price": "$149",
         "discount": "No"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 194256,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
+        "name": "Real Estate Template",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194571,
+        "description": "Real estate template designed with Laravel for showcasing property listings.",
+        "price": "$219",
+        "discount": "Yes"
+    },
+    {
+        "name": "Food Delivery App",
+        "category": "HTML Templates",
+        "technology": "Vue",
+        "id": 194572,
+        "description": "Food delivery application template built with Vue.js for smooth user experience.",
+        "price": "$179",
         "discount": "No"
     },
     {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 623378,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "50%"
+        "name": "Fitness Tracker Dashboard",
+        "category": "HTML Templates",
+        "technology": "React",
+        "id": 194573,
+        "description": "A fitness tracker dashboard template designed with React and Material-UI.",
+        "price": "$139",
+        "discount": "Yes"
     },
     {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 192856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
+        "name": "Educational LMS",
+        "category": "HTML Templates",
+        "technology": "Laravel",
+        "id": 194574,
+        "description": "Learning Management System template created using Laravel, perfect for educational platforms.",
+        "price": "$289",
         "discount": "No"
     },
     {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 523323,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 191857,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "10%"
-    },
-    {
-        "name": "Education Dashboard",
-        "category": "Html templates",
-        "technology": "Angular",
-        "id": 914856,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$149",
-        "discount": "No"
-    },
-    {
-        "name": "React UI Kit",
-        "category": "Html templates",
-        "technology": "React JS",
-        "id": 633293,
-        "description": "Start developing with an open-source library of over 450+ UI components, sections, and pages built with the utility classes from Tailwind CSS and designed in Figma.",
-        "price": "$129",
-        "discount": "No"
+        "name": "Startup Landing Page",
+        "category": "HTML Templates",
+        "technology": "HTML & CSS",
+        "id": 194575,
+        "description": "Minimalist landing page template for startups, crafted with HTML and CSS.",
+        "price": "$59",
+        "discount": "Yes"
     }
 ]

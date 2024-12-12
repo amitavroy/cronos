@@ -12,6 +12,17 @@ use Inertia\ResponseFactory;
 
 class UserController extends Controller
 {
+    /**
+     * @var array|string[]
+     */
+    private array $baseRules = [
+        'name' => 'required|min:3',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:8',
+        'position' => 'required|min:3',
+        'country' => 'required|min:3',
+    ];
+
     public function index(): Response|ResponseFactory
     {
         $users = User::orderByDesc('id')->paginate(10);
@@ -28,13 +39,7 @@ class UserController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $postData = $request->validate([
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
-            'position' => 'required|min:3',
-            'country' => 'required|min:3',
-        ]);
+        $postData = $request->validate($this->baseRules);
 
         User::create($postData);
 

@@ -10,12 +10,16 @@ use Inertia\ResponseFactory;
 
 class ProductController extends Controller
 {
-    private $baseRules = [
+    /**
+     * @var array|string[]
+     */
+    private array $baseRules = [
         'name' => 'required|min:3',
         'price' => 'numeric|min:1',
         'category' => 'required|min:2',
         'description' => 'required|min:5',
     ];
+
     public function index(): Response|ResponseFactory
     {
         $products = Product::orderByDesc('id')
