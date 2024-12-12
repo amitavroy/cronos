@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Enum\OrderStatus;
+use App\Exceptions\NoUserFound;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
@@ -22,7 +23,7 @@ class CreateRandomOrder
             $user = User::where('role', 'customer')->inRandomOrder()->first();
 
             if (! $user) {
-                throw new Exception('No user found');
+                throw new NoUserFound;
             }
 
             $order = Order::create([

@@ -38,7 +38,7 @@ class OrderPolicy
         return $user->role === UserRole::ADMIN->value || $user->id === $order->user_id;
     }
 
-    public function restore(User $user, Order $order): bool
+    public function restore(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value;
     }
