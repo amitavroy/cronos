@@ -19,8 +19,8 @@ class UserController extends Controller
         'name' => 'required|min:3',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|min:8',
-        'position' => 'required|min:3',
-        'country' => 'required|min:3',
+        'position' => 'required',
+        'country' => 'required|min:2',
     ];
 
     public function index(): Response|ResponseFactory
@@ -55,11 +55,12 @@ class UserController extends Controller
 
     public function update(Request $request, User $user): RedirectResponse
     {
-        $postData = $request->validate([
-            'name' => 'required|min:3',
-            'position' => 'required|min:3',
-            'country' => 'required|min:3',
-        ]);
+        $rules = $this->baseRules;
+
+        unset($rules['password']);
+        unset($rules['email']);
+        
+        $postData = $request->validate($rules);
 
         User::where('id', $user->id)->update($postData);
 
