@@ -3,8 +3,8 @@
 use App\Models\Order;
 use App\Models\Product;
 use App\Services\ProductService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 

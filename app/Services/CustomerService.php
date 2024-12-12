@@ -16,6 +16,7 @@ class CustomerService
     {
         return User::query()
             ->where('role', UserRole::CUSTOMER->value)
+            ->withSum('orders', 'total_amount')
             ->orderBy('name', 'asc')
             ->paginate(10);
     }

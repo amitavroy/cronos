@@ -41,6 +41,16 @@ describe('Customer service tests to get active customers', function () {
             ->and($list->last()->name)
             ->toEqual($zord->name);
     });
+
+    it('gives the total value of customer', function () {
+        $user1 = User::factory()->customer()->create();
+        Order::factory()->completed()->create(['user_id' => $user1->id, 'total_amount' => 500]);
+        Order::factory()->completed()->create(['user_id' => $user1->id, 'total_amount' => 500]);
+
+        $customers = app(CustomerService::class)->getActiveCustomers();
+
+        expect($customers->first()->orders_sum_total_amount)->toEqual(1000);
+    });
 });
 
 describe('Customer service test to get top customers', function () {

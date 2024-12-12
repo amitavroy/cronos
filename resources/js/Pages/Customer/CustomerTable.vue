@@ -28,13 +28,13 @@ const { customers } = defineProps({
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          ABCD
+          Country
         </th>
         <th
           scope="col"
           class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400"
         >
-          EFGH
+          Customer value
         </th>
       </tr>
     </thead>
@@ -57,18 +57,22 @@ const { customers } = defineProps({
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
           <div class="text-base text-gray-900 font-semibold dark:text-white">
-            xxx
+            {{ customer?.email }}
           </div>
         </td>
         <td
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
-          <div class="text-base text-gray-900 dark:text-white">xxx</div>
+          <div class="text-base text-gray-900 dark:text-white">
+            {{ customer?.country }}
+          </div>
         </td>
         <td
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
-          <div class="text-base text-gray-900 dark:text-white">xxx</div>
+          <div class="text-base text-gray-900 dark:text-white">
+            ₹{{ customer?.orders_sum_total_amount || 0 }}
+          </div>
         </td>
       </tr>
     </tbody>
