@@ -14,7 +14,8 @@ class OrderPolicy
 
     public function viewAny(User $user): bool
     {
-        return $user->role === UserRole::MANAGER->value || $user->role === UserRole::ADMIN->value;
+        return $user->role === UserRole::MANAGER->value ||
+            $user->role === UserRole::ADMIN->value;
     }
 
     public function view(User $user, Order $order): bool
@@ -39,7 +40,7 @@ class OrderPolicy
 
     public function restore(User $user, Order $order): bool
     {
-        return $user->role === UserRole::ADMIN->value || $user->id === $order->user_id;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     public function forceDelete(User $user): bool

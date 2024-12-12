@@ -16,7 +16,7 @@ class ProductPolicy
         return true;
     }
 
-    public function view(User $user, Product $product): bool
+    public function view(): bool
     {
         return true;
     }
@@ -26,22 +26,22 @@ class ProductPolicy
         return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
-    public function update(User $user, Product $product): bool
+    public function update(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
-    public function delete(User $user, Product $product): bool
+    public function delete(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
-    public function restore(User $user, Product $product): bool
+    public function restore(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
 
-    public function forceDelete(User $user, Product $product): bool
+    public function forceDelete(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value || $user->role === UserRole::MANAGER->value;
     }
