@@ -22,7 +22,7 @@ class OrderPolicy
         return $user->id === $order->user_id || $user->role === UserRole::ADMIN->value;
     }
 
-    public function create(User $user): bool
+    public function create(): bool
     {
         return Auth::check();
     }
@@ -42,7 +42,7 @@ class OrderPolicy
         return $user->role === UserRole::ADMIN->value || $user->id === $order->user_id;
     }
 
-    public function forceDelete(User $user, Order $order): bool
+    public function forceDelete(User $user): bool
     {
         return $user->role === UserRole::ADMIN->value;
     }

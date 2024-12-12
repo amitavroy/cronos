@@ -34,7 +34,7 @@ class ProductController extends Controller
     {
         $postData = $request->validate($this->baseRules);
 
-        $p = Product::create($postData);
+        Product::create($postData);
 
         return to_route('product.index');
     }
