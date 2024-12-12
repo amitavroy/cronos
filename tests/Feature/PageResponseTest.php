@@ -38,6 +38,13 @@ describe('Testing all page response', function () {
         get(route('product.show', ['product' => $product]))->assertOk();
     });
 
+    it('loads the product create page for auth user', function () {
+        $this->withoutVite();
+        actingAs(User::factory()->create());
+
+        get(route('product.create'))->assertOk();
+    });
+
     it('loads the user listing page for auth user', function () {
         $this->withoutVite();
         actingAs(User::factory()->create());
