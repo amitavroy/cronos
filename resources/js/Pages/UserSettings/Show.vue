@@ -7,21 +7,21 @@ import InputText from '../../Components/InputText.vue'
 import ChangePasswordForm from '../../Forms/ChangePasswordForm.vue'
 
 const { user } = defineProps({
-  user: Object,
+  user: Object
 })
 
 const breadCrumb = [
   { name: 'Users', link: route('user.index') },
   {
     name: 'Settings',
-    link: null,
-  },
+    link: null
+  }
 ]
 
 const form = useForm({
   name: user.name || null,
   position: user.position || null,
-  country: user.country || null,
+  country: user.country || null
 })
 
 function submit() {
@@ -49,7 +49,7 @@ function submit() {
             <img
               class="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
               src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green-2x.png"
-              alt="Jese picture"
+              alt="Jese"
             />
             <div>
               <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">

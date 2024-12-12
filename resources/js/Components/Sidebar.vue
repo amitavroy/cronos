@@ -11,8 +11,8 @@ const sidebarMenuItems = [
       { name: 'View products', href: route('product.index') },
       { name: 'Add products', href: route('product.create') },
       { name: 'View orders', href: route('order.index') },
-      { name: 'View customers', href: route('customer.index') },
-    ],
+      { name: 'View customers', href: route('customer.index') }
+    ]
   },
   {
     parent: 'Users',
@@ -20,9 +20,9 @@ const sidebarMenuItems = [
     subMenu: true,
     subItems: [
       { name: 'View', href: route('user.index') },
-      { name: 'Add', href: route('user.create') },
-    ],
-  },
+      { name: 'Add', href: route('user.create') }
+    ]
+  }
 ]
 </script>
 
@@ -264,7 +264,7 @@ const sidebarMenuItems = [
           class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700"
           id="language-dropdown"
         >
-          <ul class="py-1" role="none">
+          <ul class="py-1">
             <li>
               <a
                 href="#"

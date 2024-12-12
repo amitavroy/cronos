@@ -57,7 +57,7 @@ const user = computed(() => page.props?.auth?.user || null)
             />
             <span
               class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
-              >{{ app.name || 'Flowbite' }}</span
+            >{{ app.name || 'Flowbite' }}</span
             >
           </Link>
           <form
@@ -154,7 +154,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   <img
                     class="rounded-full w-11 h-11"
                     src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green.png"
-                    alt="Jese image"
+                    alt="Jese"
                   />
                   <div
                     class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 border border-white rounded-full bg-primary-700 dark:border-gray-700"
@@ -180,7 +180,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   >
                     New message from
                     <span class="font-semibold text-gray-900 dark:text-white"
-                      >Bonnie Green</span
+                    >Bonnie Green</span
                     >: "Hey, what's up? All set for the presentation?"
                   </div>
                   <div
@@ -198,7 +198,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   <img
                     class="rounded-full w-11 h-11"
                     src="https://flowbite-admin-dashboard.vercel.app/images/users/jese-leos.png"
-                    alt="Jese image"
+                    alt="Jese"
                   />
                   <div
                     class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-gray-900 border border-white rounded-full dark:border-gray-700"
@@ -220,11 +220,11 @@ const user = computed(() => page.props?.auth?.user || null)
                     class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
                   >
                     <span class="font-semibold text-gray-900 dark:text-white"
-                      >Jese leos</span
+                    >Jese leos</span
                     >
                     and
                     <span class="font-medium text-gray-900 dark:text-white"
-                      >5 others</span
+                    >5 others</span
                     >
                     started following you.
                   </div>
@@ -243,7 +243,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   <img
                     class="rounded-full w-11 h-11"
                     src="https://flowbite-admin-dashboard.vercel.app/images/users/joseph-mcfall.png"
-                    alt="Joseph image"
+                    alt="Joseph"
                   />
                   <div
                     class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-red-600 border border-white rounded-full dark:border-gray-700"
@@ -267,11 +267,11 @@ const user = computed(() => page.props?.auth?.user || null)
                     class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
                   >
                     <span class="font-semibold text-gray-900 dark:text-white"
-                      >Joseph Mcfall</span
+                    >Joseph Mcfall</span
                     >
                     and
                     <span class="font-medium text-gray-900 dark:text-white"
-                      >141 others</span
+                    >141 others</span
                     >
                     love your story. See it and view more stories.
                   </div>
@@ -290,7 +290,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   <img
                     class="rounded-full w-11 h-11"
                     src="https://flowbite-admin-dashboard.vercel.app/images/users/leslie-livingston.png"
-                    alt="Leslie image"
+                    alt="Leslie"
                   />
                   <div
                     class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-green-400 border border-white rounded-full dark:border-gray-700"
@@ -314,12 +314,12 @@ const user = computed(() => page.props?.auth?.user || null)
                     class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
                   >
                     <span class="font-semibold text-gray-900 dark:text-white"
-                      >Leslie Livingston</span
+                    >Leslie Livingston</span
                     >
                     mentioned you in a comment:
                     <span
                       class="font-medium text-primary-700 dark:text-primary-500"
-                      >@bonnie.green</span
+                    >@bonnie.green</span
                     >
                     what do you say?
                   </div>
@@ -338,7 +338,7 @@ const user = computed(() => page.props?.auth?.user || null)
                   <img
                     class="rounded-full w-11 h-11"
                     src="https://flowbite-admin-dashboard.vercel.app/images/users/robert-brown.png"
-                    alt="Robert image"
+                    alt="Robert"
                   />
                   <div
                     class="absolute flex items-center justify-center w-5 h-5 ml-6 -mt-5 bg-purple-500 border border-white rounded-full dark:border-gray-700"
@@ -360,7 +360,7 @@ const user = computed(() => page.props?.auth?.user || null)
                     class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400"
                   >
                     <span class="font-semibold text-gray-900 dark:text-white"
-                      >Robert Brown</span
+                    >Robert Brown</span
                     >
                     posted a new video: Glassmorphism - learn how to implement
                     the new design trend.
@@ -664,7 +664,7 @@ const user = computed(() => page.props?.auth?.user || null)
                 <img
                   class="w-8 h-8 rounded-full"
                   src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  alt="user photo"
+                  alt="user"
                 />
               </button>
             </div>
@@ -673,24 +673,23 @@ const user = computed(() => page.props?.auth?.user || null)
               class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
               id="dropdown-2"
             >
-              <div class="px-4 py-3" role="none">
-                <p class="text-sm text-gray-900 dark:text-white" role="none">
+              <div class="px-4 py-3">
+                <p class="text-sm text-gray-900 dark:text-white">
                   {{ user.name }}
                 </p>
                 <p
                   class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                  role="none"
                 >
                   {{ user.email }}
                 </p>
               </div>
-              <ul class="py-1" role="none">
+              <ul class="py-1">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    :href="route('home')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                    role="menuitem"
-                    >Dashboard</a
+                  >Dashboard
+                  </Link
                   >
                 </li>
                 <li>
@@ -698,7 +697,7 @@ const user = computed(() => page.props?.auth?.user || null)
                     :href="route('user-profile.show')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Profile
+                  >Profile
                   </Link>
                 </li>
                 <li>
@@ -706,7 +705,7 @@ const user = computed(() => page.props?.auth?.user || null)
                     href="#"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Earnings</a
+                  >Earnings</a
                   >
                 </li>
                 <li>
