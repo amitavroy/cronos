@@ -22,7 +22,7 @@ class CreateRandomOrder
         for ($i = 0; $i < $count; $i++) {
             $user = User::where('role', 'customer')->inRandomOrder()->first();
 
-            if (! $user) {
+            if (!$user) {
                 throw new NoUserFound;
             }
 
@@ -34,7 +34,7 @@ class CreateRandomOrder
                 'updated_at' => now(),
             ]);
 
-            $products = Product::inRandomOrder()->take(rand(1, 3))->get();
+            $products = Product::inRandomOrder()->take(random_int(1, 3))->get();
             $totalAmount = 0;
 
             $products->each(function ($product) use ($order, &$totalAmount) {

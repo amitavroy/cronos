@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
 
         $this->createProducts();
 
-        app(CreateRandomOrder::class)->handle(rand(10, 30));
+        app(CreateRandomOrder::class)->handle(random_int(10, 30));
     }
 
     private function createProducts(): void
