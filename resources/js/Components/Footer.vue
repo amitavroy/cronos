@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/vue3'
     <ul class="flex flex-wrap items-center mb-6 space-y-1 md:mb-0">
       <li>
         <Link
-          :href="route('home')"
+          :href="encodeURI(route('home'))"
           class="mr-4 text-sm font-normal text-gray-500 hover:underline md:mr-6 dark:text-gray-400"
         >Terms and conditions
         </Link>

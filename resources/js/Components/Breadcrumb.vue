@@ -3,7 +3,7 @@ import Icon from './Icon.vue'
 import { Link } from '@inertiajs/vue3'
 
 const { links } = defineProps({
-  links: Object,
+  links: Object
 })
 </script>
 
@@ -14,7 +14,7 @@ const { links } = defineProps({
     >
       <li class="inline-flex items-center">
         <Link
-          :href="route('home')"
+          :href="encodeURI(route('home'))"
           class="inline-flex items-center text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-white"
         >
           <Icon name="home" />
@@ -46,7 +46,7 @@ const { links } = defineProps({
             v-else
             class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500"
             aria-current="page"
-            >Products</span
+          >Products</span
           >
         </div>
       </li>
