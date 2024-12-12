@@ -31,7 +31,7 @@ class CreateRandomOrder
             $totalAmount = 0;
 
             $products->each(function ($product) use ($order, &$totalAmount) {
-                $quantity = rand(1, 5);
+                $quantity = random_int(1, 5);
                 $subtotal = $product->price * $quantity;
 
                 OrderItem::create([

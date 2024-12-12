@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
@@ -13,8 +15,8 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => $this->faker->randomNumber(),
-            'product_id' => $this->faker->randomNumber(),
+            'order_id' => Order::factory(),
+            'product_id' => Product::factory(),
             'quantity' => $this->faker->randomNumber(),
             'unit_price' => $this->faker->randomFloat(),
             'subtotal' => $this->faker->randomFloat(),
