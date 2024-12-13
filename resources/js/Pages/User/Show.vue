@@ -1,25 +1,24 @@
 <script setup>
 import Breadcrumb from '../../Components/Breadcrumb.vue'
-import ProductForm from '../../Forms/ProductForm.vue'
 import ContentCard from '../../Components/ContentCard.vue'
 import PageContainer from '../../Components/PageContainer.vue'
 import PageTitle from '../../Components/PageTitle.vue'
 import UserForm from '../../Forms/UserForm.vue'
 
 const { user } = defineProps({
-  user: Object,
+  user: Object
 })
 
 const breadCrumb = [
   { name: 'Users', link: route('user.index') },
   {
     name: 'View users',
-    link: route('user.index'),
+    link: route('user.index')
   },
   {
     name: 'Show user',
-    link: null,
-  },
+    link: null
+  }
 ]
 </script>
 

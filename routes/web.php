@@ -24,6 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/user', UserController::class);
 
     Route::resource('/product', ProductController::class);
-    Route::resource('/customer', CustomerController::class)->only(['index']);
+    Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index']);
 });

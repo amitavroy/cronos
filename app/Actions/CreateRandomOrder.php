@@ -22,7 +22,7 @@ class CreateRandomOrder
         for ($i = 0; $i < $count; $i++) {
             $user = User::where('role', 'customer')->inRandomOrder()->first();
 
-            if (!$user) {
+            if (! $user) {
                 throw new NoUserFound;
             }
 

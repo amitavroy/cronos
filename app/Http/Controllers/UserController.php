@@ -59,7 +59,7 @@ class UserController extends Controller
 
         unset($rules['password']);
         unset($rules['email']);
-        
+
         $postData = $request->validate($rules);
 
         User::where('id', $user->id)->update($postData);

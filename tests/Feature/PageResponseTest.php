@@ -96,4 +96,13 @@ describe('Testing all page response', function () {
 
         get(route('customer.index'))->assertOk();
     });
+
+    it('loads customer details page', function () {
+        $this->withoutVite();
+        $user = User::factory()->customer()->create();
+
+        actingAs($user);
+
+        get(route('customer.show', ['customer' => $user]))->assertOk();
+    });
 });
