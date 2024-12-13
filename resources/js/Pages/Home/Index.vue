@@ -3,12 +3,16 @@ import PageContainer from '../../Components/PageContainer.vue'
 import Breadcrumb from '../../Components/Breadcrumb.vue'
 import PageTitle from '../../Components/PageTitle.vue'
 import StatsCard from '../../Components/StatsCard.vue'
-import { usePage } from '@inertiajs/vue3'
+import { usePage, usePoll } from '@inertiajs/vue3'
 import TopProdAndCustomer from './TopProdAndCustomer.vue'
 
 const breadCrumbs = []
 
 const { props } = usePage()
+const props_from_define = defineProps({
+  random_number: String,
+})
+usePoll(2000)
 </script>
 
 <template>
@@ -32,7 +36,7 @@ const { props } = usePage()
         <div>
           <TopProdAndCustomer :top-products="props.top_products" :top-customers="props.top_customers" />
         </div>
-        <div></div>
+        <div>{{ props_from_define.random_number }}</div>
       </div>
     </div>
   </div>

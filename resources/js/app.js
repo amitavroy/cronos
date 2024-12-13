@@ -7,6 +7,10 @@ import { ZiggyVue } from 'ziggy-js'
 import Layout from './Layout.vue'
 
 createInertiaApp({
+  progress: {
+    delay: 2,
+    color: '#29d',
+  },
   resolve: (name) => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
     let page = pages[`./Pages/${name}.vue`]

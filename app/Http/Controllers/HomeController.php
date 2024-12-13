@@ -17,12 +17,15 @@ class HomeController extends Controller
     ): Response|ResponseFactory {
         $data = $homePageData->handle();
 
+        $time = now()->format('Y-m-d h:m:i:s');
+        logger($time);
         return inertia('Home/Index', [
             'order_count' => $data['order_count'],
             'product_count' => $data['product_count'],
             'customer_count' => $data['customer_count'],
             'top_customers' => $customerService->getTopCustomers(),
             'top_products' => $productService->getTopProducts(),
+            'random_number' => $time,
         ]);
     }
 }
