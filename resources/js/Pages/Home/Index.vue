@@ -12,7 +12,7 @@ const { props } = usePage()
 const props_from_define = defineProps({
   random_number: String,
 })
-usePoll(2000)
+usePoll(10000)
 </script>
 
 <template>

@@ -29,6 +29,7 @@ class CustomerService
         return User::query()
             ->where('role', UserRole::CUSTOMER->value)
             ->withCount('orders')
+            ->withSum('orders', 'total_amount')
             ->orderBy('orders_count', 'desc')
             ->limit(5)
             ->get();
