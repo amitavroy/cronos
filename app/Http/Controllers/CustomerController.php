@@ -23,6 +23,8 @@ class CustomerController extends Controller
             abort(404, 'Customer not found');
         }
 
+        $customer->load('orders')->limit(10);
+
         return inertia('Customer/Show', [
             'customer' => $customer,
         ]);

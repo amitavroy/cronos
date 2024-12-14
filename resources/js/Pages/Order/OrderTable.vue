@@ -54,7 +54,7 @@ const { orders } = defineProps({
     </tbody>
   </table>
 
-  <div class="p-4 bg-white w-full flex justify-center">
+  <div class="p-4 bg-white w-full flex justify-center" v-if="orders?.links">
     <Pagination :links="orders.links" />
   </div>
 </template>

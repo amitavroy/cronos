@@ -1,5 +1,5 @@
 <template>
-  <span>₹ {{ amount }}</span>
+  <span>₹{{ amount }}</span>
 </template>
 
 <script setup>
