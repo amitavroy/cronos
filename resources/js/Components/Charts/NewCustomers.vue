@@ -1,11 +1,20 @@
 <script setup>
 
+const { recentCustomerCount } = defineProps({
+  recentCustomerCount: {
+    type: Object,
+    required: true
+  }
+})
+
+const total = Object.values(recentCustomerCount).reduce((acc, curr) => acc + curr, 0);
+
 const signupsChartColors = {
   backgroundBarColors: ['#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB']
 }
 
 const options = {
-  labels: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb'],
+  labels: Object.keys(recentCustomerCount),
   chart: {
     type: 'bar',
     height: '140px',
@@ -81,7 +90,7 @@ const options = {
 const series = [
   {
     name: 'Users',
-    data: [1334, 2435, 1753, 1328, 1155, 1632, 1336]
+    data: Object.values(recentCustomerCount)
   }
 ]
 </script>
@@ -91,7 +100,7 @@ const series = [
     class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:border-gray-700 sm:p-6 dark:bg-gray-800">
     <div class="w-full">
       <h3 class="text-base font-normal text-gray-500">New customers</h3>
-      <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">2,340</span>
+      <span class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white">{{ total }}</span>
       <p class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400">
         <span class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"

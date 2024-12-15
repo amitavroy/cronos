@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\HomePageData;
+use App\Services\ChartDataService;
 use App\Services\CustomerService;
 use App\Services\ProductService;
 use Inertia\Response;
@@ -14,6 +15,7 @@ class HomeController extends Controller
         HomePageData $homePageData,
         CustomerService $customerService,
         ProductService $productService,
+        ChartDataService $chartDataService,
     ): Response|ResponseFactory {
         $data = $homePageData->handle();
 
@@ -24,6 +26,7 @@ class HomeController extends Controller
             'top_customers' => $customerService->getTopCustomers(),
             'top_products' => $productService->getTopProducts(),
             'random_number' => random_int(1, 100),
+            'recent_customer_count' => $chartDataService->getRecentCustomerCount(),
         ]);
     }
 }
