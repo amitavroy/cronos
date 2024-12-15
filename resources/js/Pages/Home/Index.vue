@@ -5,6 +5,8 @@ import PageTitle from '../../Components/PageTitle.vue'
 import StatsCard from '../../Components/StatsCard.vue'
 import { usePage, usePoll } from '@inertiajs/vue3'
 import TopProdAndCustomer from './TopProdAndCustomer.vue'
+import NewOrders from '../../Components/Charts/NewOrders.vue'
+import NewCustomers from '../../Components/Charts/NewCustomers.vue'
 
 const breadCrumbs = []
 
@@ -13,6 +15,7 @@ const props_from_define = defineProps({
   random_number: String,
 })
 usePoll(10000)
+
 </script>
 
 <template>
@@ -32,11 +35,18 @@ usePoll(10000)
           icon="users" />
       </div>
 
+      <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
+        <NewOrders />
+        <NewCustomers />
+      </div>
+
       <div class="grid w-full grid-cols-2 gap-4 mt-4">
         <div>
           <TopProdAndCustomer :top-products="props.top_products" :top-customers="props.top_customers" />
         </div>
-        <div>{{ props_from_define.random_number }}</div>
+        <div>
+
+        </div>
       </div>
     </div>
   </div>
