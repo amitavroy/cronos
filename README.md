@@ -2,6 +2,8 @@
 
 # CRONOs application
 
+![CRONOs Dashboard](https://ik.imagekit.io/xqpqzbbjz/cronos/cronos_dashboard_1.jpg?updatedAt=1734239402769)
+
 Base theme taken from [Flowbite admin](https://github.com/themesberg/flowbite-admin-dashboard/tree/main)
 
 Currently, these are the features that are almost working:
