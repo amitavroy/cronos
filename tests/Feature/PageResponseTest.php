@@ -105,4 +105,13 @@ describe('Testing all page response', function () {
 
         get(route('customer.show', ['customer' => $user]))->assertOk();
     });
+
+    it('loads the notification page', function () {
+        $this->withoutVite();
+        $user = User::factory()->create();
+
+        actingAs($user);
+
+        get(route('notification.index'))->assertOk();
+    });
 });
