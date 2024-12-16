@@ -13,7 +13,7 @@ class TestCreateOrderCommand extends Command
 
     public function handle(CreateRandomOrder $createRandomOrder): void
     {
-        $orderCount = random_int(1, 3);
+        $orderCount = random_int(1, 2);
 
         for ($i = 0; $i < $orderCount; $i++) {
             $createRandomOrder->handle($orderCount);
