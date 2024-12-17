@@ -36,7 +36,7 @@ usePoll(10000)
       </div>
 
       <div class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3">
-        <NewOrders />
+        <NewOrders :recent-order-count="props.recent_order_count" />
         <NewCustomers :recent-customer-count="props.recent_customer_count" />
       </div>
 
@@ -45,7 +45,6 @@ usePoll(10000)
           <TopProdAndCustomer :top-products="props.top_products" :top-customers="props.top_customers" />
         </div>
         <div>
-
         </div>
       </div>
     </div>

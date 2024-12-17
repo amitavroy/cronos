@@ -1,5 +1,12 @@
 <script setup>
 
+const { recentOrderCount } = defineProps({
+  recentOrderCount: {
+    type: Object,
+    required: true
+  }
+})
+
 const options = {
   colors: ['#1A56DB', '#FDBA8C'],
   chart: {
@@ -70,15 +77,7 @@ const series = [
   {
     name: 'Quantity',
     color: '#1A56DB',
-    data: [
-      { x: '01 Feb', y: 170 },
-      { x: '02 Feb', y: 180 },
-      { x: '03 Feb', y: 164 },
-      { x: '04 Feb', y: 145 },
-      { x: '05 Feb', y: 194 },
-      { x: '06 Feb', y: 170 },
-      { x: '07 Feb', y: 155 },
-    ]
+    data: recentOrderCount
   }
 ]
 </script>

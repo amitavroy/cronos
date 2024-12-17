@@ -54,7 +54,7 @@ class ChartDataService
     /**
      * Get the recent order count data for Chart
      *
-     * @return array<string, mixed>
+     * @return list<array<string, mixed>>
      */
     public function getRecentOrderCount(): array
     {
@@ -84,7 +84,10 @@ class ChartDataService
 
             $formattedDate = Carbon::parse($date)->format('jS M');
 
-            $formattedResult[$formattedDate] = $finalCount;
+            $formattedResult[] = [
+                'x' => $formattedDate,
+                'y' => $finalCount,
+            ];
         }
 
         return array_reverse($formattedResult);
