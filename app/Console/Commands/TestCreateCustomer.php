@@ -24,7 +24,7 @@ class TestCreateCustomer extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $userCount = random_int(1, 3);
 

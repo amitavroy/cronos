@@ -27,6 +27,7 @@ class HomeController extends Controller
             'top_products' => $productService->getTopProducts(),
             'random_number' => random_int(1, 100),
             'recent_customer_count' => $chartDataService->getRecentCustomerCount(),
+            'recent_order_count' => $chartDataService->getRecentOrderCount(),
         ]);
     }
 }

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNotificationRequest;
-use App\Http\Requests\UpdateNotificationRequest;
 use App\Models\Notification;
 use Inertia\Response;
 use Inertia\ResponseFactory;
