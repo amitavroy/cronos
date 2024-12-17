@@ -25,9 +25,9 @@ const { orders } = defineProps({
         </th>
       </tr>
     </thead>
-    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-      <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" v-if="orders?.data && orders.data.length > 0"
-        v-for="order in orders?.data">
+    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700"
+      v-if="orders?.data && orders.data.length > 0">
+      <tr class="hover:bg-gray-100 dark:hover:bg-gray-700" v-for="order in orders?.data" :key="order.id">
         <td class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
           <div class="text-base font-semibold text-gray-900 dark:text-white">
             {{ order?.user?.name }}
