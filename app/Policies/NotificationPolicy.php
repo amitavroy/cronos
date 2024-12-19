@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Notification;
+use App\Enum\UserRole;
 use App\Models\User;
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationPolicy
 {
@@ -12,7 +14,7 @@ class NotificationPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     /**

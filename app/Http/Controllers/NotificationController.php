@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNotificationRequest;
-use App\Models\Notification;
-use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use App\Models\Notification;
 use Inertia\ResponseFactory;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StoreNotificationRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class NotificationController extends Controller
 {
+    use AuthorizesRequests;
     /**
      * Display a listing of the resource.
      */
     public function index(): Response|ResponseFactory
     {
+        $this->authorize('viewAny', Notification::class);
+
         $notifications = Notification::query()
             ->orderBy('created_at', 'desc')
             ->paginate(10);

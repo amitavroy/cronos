@@ -114,4 +114,13 @@ describe('Testing all page response', function () {
 
         get(route('notification.index'))->assertOk();
     });
+
+    it('loads the notification create page for auth user', function () {
+        $this->withoutVite();
+        $user = User::factory()->create();
+
+        actingAs($user);
+
+        get(route('notification.create'))->assertOk();
+    });
 });
