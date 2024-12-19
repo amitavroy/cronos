@@ -10,6 +10,7 @@ uses(RefreshDatabase::class);
 
 describe('Notification listing test', function () {
    it('lists the notifications for admin user', function () {
+       $this->withoutVite();
        $admin = User::factory()->admin()->create();
        actingAs($admin);
 
@@ -17,6 +18,7 @@ describe('Notification listing test', function () {
     });
 
     it('redirects to dashboard for non-admin user', function () {
+        $this->withoutVite();
         $customer = User::factory()->customer()->create();
         $manager = User::factory()->manager()->create();
 
@@ -26,4 +28,4 @@ describe('Notification listing test', function () {
         actingAs($manager);
         get(route('notification.index'))->assertForbidden();
     });
-})->only();
+});
