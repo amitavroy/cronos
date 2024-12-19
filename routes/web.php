@@ -27,5 +27,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/product', ProductController::class);
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index']);
-    Route::resource('/notification', NotificationController::class)->only(['index']);
+    Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store']);
 });

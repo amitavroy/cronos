@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreNotificationRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreNotificationRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**

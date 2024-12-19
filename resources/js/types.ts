@@ -12,3 +12,8 @@ export interface IInitialUserData {
   position: string
   country: string
 }
+
+export interface IInitialNotificationData {
+  title: string
+  message: string
+}
