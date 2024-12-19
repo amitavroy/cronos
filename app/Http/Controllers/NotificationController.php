@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Response;
-use App\Models\Notification;
-use Inertia\ResponseFactory;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreNotificationRequest;
+use App\Models\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class NotificationController extends Controller
 {
     use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */

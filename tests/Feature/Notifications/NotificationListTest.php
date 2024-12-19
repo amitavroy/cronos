@@ -9,12 +9,12 @@ use function Pest\Laravel\get;
 uses(RefreshDatabase::class);
 
 describe('Notification listing test', function () {
-   it('lists the notifications for admin user', function () {
-       $this->withoutVite();
-       $admin = User::factory()->admin()->create();
-       actingAs($admin);
+    it('lists the notifications for admin user', function () {
+        $this->withoutVite();
+        $admin = User::factory()->admin()->create();
+        actingAs($admin);
 
-       get(route('notification.index'))->assertOk();
+        get(route('notification.index'))->assertOk();
     });
 
     it('redirects to dashboard for non-admin user', function () {

@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Enum\UserRole;
 use App\Models\User;
-use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 
 class NotificationPolicy
@@ -20,9 +19,9 @@ class NotificationPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Notification $notification): bool
+    public function view(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -30,38 +29,38 @@ class NotificationPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Notification $notification): bool
+    public function update(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Notification $notification): bool
+    public function delete(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Notification $notification): bool
+    public function restore(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Notification $notification): bool
+    public function forceDelete(User $user): bool
     {
-        return false;
+        return $user->role === UserRole::ADMIN->value;
     }
 }
