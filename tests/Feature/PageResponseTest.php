@@ -115,9 +115,9 @@ describe('Testing all page response', function () {
         get(route('notification.index'))->assertOk();
     });
 
-    it('loads the notification create page for auth user', function () {
+    it('loads the notification create page for admin user', function () {
         $this->withoutVite();
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
