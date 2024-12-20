@@ -11,4 +11,11 @@ class Notification extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'message'];
+
+    public function readByUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_notifications')
+            ->withPivot('read_at')
+            ->withTimestamps();
+    }
 }
