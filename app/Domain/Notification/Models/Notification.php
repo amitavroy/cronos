@@ -13,6 +13,11 @@ class Notification extends Model
     /** @use HasFactory<NotificationFactory> */
     use HasFactory;
 
+    protected static function newFactory(): NotificationFactory
+    {
+        return NotificationFactory::new();
+    }
+
     protected $fillable = ['title', 'message'];
 
     /**

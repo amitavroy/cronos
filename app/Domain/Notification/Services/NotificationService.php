@@ -24,7 +24,7 @@ class NotificationService
                     ->where('user_notification.user_id', '=', $user->id);
             })
             ->whereNull('user_notification.id')
-            ->select(['notifications.id', 'notifications.'])
+            ->select(['notifications.id', 'notifications.title', 'notifications.message'])
             ->paginate(10);
     }
 }
