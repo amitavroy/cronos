@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Domain\Notification\Models;
 
+use App\Models\User;
+use Database\Factories\NotificationFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Notification extends Model
 {
-    /** @use HasFactory<\Database\Factories\NotificationFactory> */
+    /** @use HasFactory<NotificationFactory> */
     use HasFactory;
 
     protected $fillable = ['title', 'message'];

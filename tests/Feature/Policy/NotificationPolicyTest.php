@@ -1,12 +1,11 @@
 <?php
 
+use App\Domain\Notification\Policies\NotificationPolicy;
 use App\Models\User;
-use App\Policies\NotificationPolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
-
-use function Pest\Laravel\actingAs;
 
 describe('Test Notification policy', function () {
     it('allows viewing all by admin only', function () {

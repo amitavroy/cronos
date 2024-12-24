@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\NotificationData;
-use App\Models\Notification;
+use App\Domain\Notification\Models\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;

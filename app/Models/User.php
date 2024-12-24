@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Notification\Models\Notification;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;

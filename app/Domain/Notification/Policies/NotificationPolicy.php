@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Domain\Notification\Policies;
 
 use App\Enum\UserRole;
 use App\Models\User;
