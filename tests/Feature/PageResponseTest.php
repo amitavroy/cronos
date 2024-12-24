@@ -108,7 +108,7 @@ describe('Testing all page response', function () {
 
     it('loads the notification page', function () {
         $this->withoutVite();
-        $user = User::factory()->create();
+        $user = User::factory()->admin()->create();
 
         actingAs($user);
 
