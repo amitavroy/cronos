@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Pagination\LengthAwarePaginator;
 use App\Domain\Notification\Models\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Domain\Notification\Services\NotificationService;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 uses(RefreshDatabase::class);
 
