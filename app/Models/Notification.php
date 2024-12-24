@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Notification extends Model
@@ -20,7 +20,7 @@ class Notification extends Model
      */
     public function readByUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'user_notifications')
+        return $this->belongsToMany(User::class, 'user_notification')
             ->withPivot('read_at')
             ->withTimestamps();
     }

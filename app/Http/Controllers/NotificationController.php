@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNotificationRequest;
+use App\Data\NotificationData;
 use App\Models\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -31,12 +31,16 @@ class NotificationController extends Controller
 
     public function create(): Response|ResponseFactory
     {
+        $this->authorize('create', Notification::class);
+
         return inertia('Notification/Create');
     }
 
-    public function store(StoreNotificationRequest $request): RedirectResponse
+    public function store(NotificationData $notificationData): RedirectResponse
     {
-        Notification::create($request->all());
+        $this->authorize('create', Notification::class);
+
+        Notification::create($notificationData->toArray());
 
         return redirect()->route('notification.index');
     }
