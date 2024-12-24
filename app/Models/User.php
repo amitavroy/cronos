@@ -46,6 +46,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    /**
+     * Get notifications read by a user
+     *
+     * @return BelongsToMany<Notification, covariant $this>
+     */
     public function readNotifications(): BelongsToMany
     {
         return $this->belongsToMany(Notification::class, 'user_notifications')
