@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Actions\CreateRandomOrder;
+use App\Domain\Product\Models\Product;
 use App\Enum\UserRole;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

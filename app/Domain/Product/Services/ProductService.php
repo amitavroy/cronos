@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace App\Domain\Product\Services;
 
-use App\Models\Product;
+use App\Domain\Product\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProductService

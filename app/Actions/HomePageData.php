@@ -2,10 +2,10 @@
 
 namespace App\Actions;
 
+use App\Domain\Product\Models\Product;
 use App\Enum\OrderStatus;
 use App\Enum\UserRole;
 use App\Models\Order;
-use App\Models\Product;
 use App\Models\User;
 
 class HomePageData

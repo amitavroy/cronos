@@ -2,8 +2,8 @@
 
 use App\Actions\CreateRandomOrder;
 use App\Console\Commands\TestCreateOrderCommand;
+use App\Domain\Product\Models\Product;
 use App\Models\OrderItem;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

@@ -2,7 +2,7 @@
 
 use App\Actions\CreateRandomOrder;
 use App\Actions\HomePageData;
-use App\Models\Product;
+use App\Domain\Product\Models\Product;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

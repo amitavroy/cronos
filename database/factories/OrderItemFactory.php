@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Domain\Product\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 

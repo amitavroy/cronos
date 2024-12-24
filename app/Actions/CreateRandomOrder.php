@@ -2,11 +2,11 @@
 
 namespace App\Actions;
 
+use App\Domain\Product\Models\Product;
 use App\Enum\OrderStatus;
 use App\Exceptions\NoUserFound;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
 use App\Models\User;
 use Exception;
 use Random\RandomException;

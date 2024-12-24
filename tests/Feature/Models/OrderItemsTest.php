@@ -1,8 +1,8 @@
 <?php
 
+use App\Domain\Product\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

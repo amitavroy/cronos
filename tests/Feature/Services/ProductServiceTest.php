@@ -1,8 +1,8 @@
 <?php
 
+use App\Domain\Product\Models\Product;
+use App\Domain\Product\Services\ProductService;
 use App\Models\Order;
-use App\Models\Product;
-use App\Services\ProductService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

@@ -1,7 +1,7 @@
 <?php
 
+use App\Domain\Product\Policies\ProductPolicy;
 use App\Models\User;
-use App\Policies\ProductPolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Pest\Laravel\actingAs;

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\HomePageData;
+use App\Domain\Product\Services\ProductService;
 use App\Services\ChartDataService;
 use App\Services\CustomerService;
-use App\Services\ProductService;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
