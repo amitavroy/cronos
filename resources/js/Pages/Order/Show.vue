@@ -35,9 +35,33 @@ const breadCrumb = [
     </PageContainer>
 
     <div class="grid grid-cols-2 gap-4">
-      <ContentCard> </ContentCard>
+      <ContentCard>
+        <h1 class="text-4xl mb-8">Order ID: #{{ order.id }}</h1>
+        <ul class="mb-12">
+          <li>
+            Total amount:
+            <Rupee :amount="order.total_amount" />
+          </li>
+          <li>Status: {{ order.status }}</li>
+        </ul>
 
-      <ContentCard> </ContentCard>
+        <h2 class="text-2xl">Customer details:</h2>
+        <ul class="mb-8">
+          <li>Name: {{ order?.user?.name }}</li>
+          <li>Email: {{ order?.user?.email }}</li>
+        </ul>
+
+        <h2 class="text-2xl">Product details:</h2>
+        <ul class="mb-8">
+          <li class="mb-4 mt-8" v-for="product in order?.products" :key="product.id">
+            <strong>{{ product.name }}</strong>
+            <br />
+            {{ product.description }}
+            <br />
+            <Rupee :amount="product.price" />
+          </li>
+        </ul>
+      </ContentCard>
     </div>
   </div>
 </template>
