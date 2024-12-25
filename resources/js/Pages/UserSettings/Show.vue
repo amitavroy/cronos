@@ -7,21 +7,21 @@ import InputText from '../../Components/InputText.vue'
 import ChangePasswordForm from '../../Forms/ChangePasswordForm.vue'
 
 const { user } = defineProps({
-  user: Object
+  user: Object,
 })
 
 const breadCrumb = [
   { name: 'Users', link: route('user.index') },
   {
     name: 'Settings',
-    link: null
-  }
+    link: null,
+  },
 ]
 
 const form = useForm({
   name: user.name || null,
   position: user.position || null,
-  country: user.country || null
+  country: user.country || null,
 })
 
 function submit() {

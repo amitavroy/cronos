@@ -30,13 +30,23 @@ function submit() {
 
 <template>
   <form @submit.prevent="submit">
-    <InputText v-model="form.title" name="Notification title" placeholder="Enter notification title"
-      :error-message="form.errors?.title" />
-    <InputText v-model="form.message" name="Notification message" placeholder="Enter the message"
-      :error-message="form.errors?.message" />
+    <InputText
+      v-model="form.title"
+      name="Notification title"
+      placeholder="Enter notification title"
+      :error-message="form.errors?.title"
+    />
+    <InputText
+      v-model="form.message"
+      name="Notification message"
+      placeholder="Enter the message"
+      :error-message="form.errors?.message"
+    />
 
-    <button type="submit"
-      class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+    <button
+      type="submit"
+      class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+    >
       Save
     </button>
   </form>

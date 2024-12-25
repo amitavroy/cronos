@@ -7,7 +7,7 @@ import ContentCard from '@/Components/ContentCard.vue'
 const breadCrumb = [
   { name: 'Notification', link: route('notification.index') },
   { name: 'Create', link: route('notification.create') },
-];
+]
 </script>
 
 <template>
