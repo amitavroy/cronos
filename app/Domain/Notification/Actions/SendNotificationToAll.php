@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Domain\Notification\Actions;
+
+use App\Domain\Notification\Models\Notification;
+use App\Models\User;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+
+class SendNotificationToAll
+{
+    public function execute(Notification $notification): void
+    {
+        $count = DB::table('user_notification')
+            ->where('notification_id', $notification->id)
+            ->count();
+
+        if ($count > 0) {
+            return;
+        }
+
+        // doing this to go through larastan.
+        $users = User::select('id')->get()->toArray();
+        $userIds = collect($users)->pluck('id');
+
+        $userIds->chunk(100)->each(function (Collection $chunk) use ($notification): void {
+            $action = app(SendNotificationToUsers::class);
+            $action->execute($notification, $chunk);
+        });
+    }
+}
