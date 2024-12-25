@@ -1,5 +1,7 @@
 <?php
 
+use App\Domain\Notification\Actions\SendNotificationToAll;
+use App\Domain\Notification\Actions\SendNotificationToUsers;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\Notification\Services\NotificationService;
 use App\Models\User;
@@ -9,7 +11,7 @@ uses(RefreshDatabase::class);
 
 describe('NotificationService test', function () {
     it('returns only the unread notifications', function () {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
 
         $notification = Notification::factory()->create();
         Notification::factory()->create();
@@ -28,7 +30,7 @@ describe('NotificationService test', function () {
     });
 
     it('returns order by id desc', function () {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
 
         $notification1 = Notification::factory()->create();
         $notification2 = Notification::factory()->create();
@@ -44,14 +46,14 @@ describe('NotificationService test', function () {
     });
 
     it('adds notification entry for users', function () {
-        $user1 = \App\Models\User::factory()->create();
-        $user2 = \App\Models\User::factory()->create();
-        $user3 = \App\Models\User::factory()->create();
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
+        $user3 = User::factory()->create();
         $notification = Notification::factory()->create();
 
-        $service = app(NotificationService::class);
+        $service = app(SendNotificationToUsers::class);
 
-        $service->sendNotifictionToUsers(
+        $service->execute(
             notification: $notification,
             userIds: collect([$user1->id, $user2->id])
         );
@@ -71,9 +73,8 @@ describe('NotificationService test', function () {
 
         $notification = Notification::factory()->create();
 
-        $service = app(NotificationService::class);
-
-        $service->sendNotificationToAll($notification);
+        $action = app(SendNotificationToAll::class);
+        $action->execute($notification);
 
         $count = DB::table('user_notification')->count();
 
@@ -85,10 +86,10 @@ describe('NotificationService test', function () {
 
         $notification = Notification::factory()->create();
 
-        $service = app(NotificationService::class);
+        $action = app(SendNotificationToAll::class);
 
-        $service->sendNotificationToAll($notification);
-        $service->sendNotificationToAll($notification); // sending again
+        $action->execute($notification);
+        $action->execute($notification); // sending again
 
         $count = DB::table('user_notification')->count();
 
