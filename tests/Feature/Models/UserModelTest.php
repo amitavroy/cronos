@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Domain\Notification\Models\Notification;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
