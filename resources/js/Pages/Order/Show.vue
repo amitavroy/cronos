@@ -50,7 +50,8 @@ const breadCrumb = [
           <li>Name: {{ order?.user?.name }}</li>
           <li>Email: {{ order?.user?.email }}</li>
         </ul>
-
+      </ContentCard>
+      <ContentCard>
         <h2 class="text-2xl">Product details:</h2>
         <ul class="mb-8">
           <li class="mb-4 mt-8" v-for="product in order?.products" :key="product.id">
