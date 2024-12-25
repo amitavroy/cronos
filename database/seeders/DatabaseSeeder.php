@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Actions\CreateRandomOrder;
+use App\Domain\Notification\Models\Notification;
 use App\Domain\Product\Models\Product;
 use App\Enum\UserRole;
 use App\Models\User;
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::factory(10)->create();
+        Notification::factory(10)->create();
 
         User::updateOrCreate([
             'email' => config('app.default_credentials.email'),

@@ -54,7 +54,11 @@ const breadCrumb = [
       <ContentCard>
         <h2 class="text-2xl">Product details:</h2>
         <ul class="mb-8">
-          <li class="mb-4 mt-8" v-for="product in order?.products" :key="product.id">
+          <li
+            class="mb-4 mt-8"
+            v-for="product in order?.products"
+            :key="product.id"
+          >
             <strong>{{ product.name }}</strong>
             <br />
             {{ product.description }}
