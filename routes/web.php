@@ -1,6 +1,5 @@
 <?php
 
-use App\Domain\Notification\Services\NotificationService;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -29,8 +28,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store']);
-});
-
-Route::get('temp', function (NotificationService $notificationService) {
-    return $notificationService->getUserUnreadNotifications(\App\Models\User::findOrFail(11));
 });
