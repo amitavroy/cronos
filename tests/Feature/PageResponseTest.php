@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\Product\Models\Product;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -86,6 +87,16 @@ describe('Testing all page response', function () {
         actingAs($user);
 
         get(route('order.index'))->assertOk();
+    });
+
+    it('loads the order details page', function () {
+        $this->withoutVite();
+        $user = User::factory()->create();
+        $order = Order::factory()->create(['user_id' => $user->id]);
+
+        actingAs($user);
+
+        get(route('order.show', ['order' => $order]))->assertOk();
     });
 
     it('loads the customers page', function () {

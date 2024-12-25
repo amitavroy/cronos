@@ -1,6 +1,8 @@
 <script setup>
+import { route } from 'ziggy-js'
 import Pagination from '../../Components/Pagination.vue'
 import Rupee from '../../Components/Rupee.vue'
+import { Link } from '@inertiajs/vue3'
 
 const { orders } = defineProps({
   orders: Object,
@@ -52,7 +54,9 @@ const { orders } = defineProps({
           class="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400"
         >
           <div class="text-base font-semibold text-gray-900 dark:text-white">
-            {{ order?.user?.name }}
+            <Link :href="route('order.show', { order: order })">{{
+              order?.user?.name
+            }}</Link>
           </div>
         </td>
         <td
