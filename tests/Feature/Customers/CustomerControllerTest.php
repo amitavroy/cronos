@@ -18,4 +18,14 @@ describe('Customer controller test', function () {
 
         get(route('customer.index'))->assertOk();
     });
+
+    it('returns not found if user is not customer', function () {
+        $this->withoutVite();
+
+        $user = User::factory()->admin()->create();
+
+        actingAs(User::factory()->admin()->create());
+
+        get(route('customer.show', ['customer' => $user]))->assertNotFound();
+    });
 });
