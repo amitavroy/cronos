@@ -2,8 +2,8 @@
 
 use App\Domain\Notification\Models\Notification;
 use App\Domain\Notification\Services\NotificationService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 uses(RefreshDatabase::class);
 
@@ -18,7 +18,7 @@ describe('NotificationService test', function () {
         $service->getUserUnreadNotifications($user);
 
         expect($service->getUserUnreadNotifications($user))
-            ->toBeInstanceOf(LengthAwarePaginator::class);
+            ->toBeInstanceOf(Builder::class);
     });
 
     it('returns only the unread notifications', function () {
@@ -35,8 +35,24 @@ describe('NotificationService test', function () {
 
         $service = app(NotificationService::class);
 
-        $notifications = $service->getUserUnreadNotifications($user);
+        $notifications = $service->getUserUnreadNotifications($user)->paginate(5);
 
         expect($notifications->total())->toBe(1);
+    });
+
+    it('returns order by id desc', function () {
+        $user = \App\Models\User::factory()->create();
+
+        $notification1 = Notification::factory()->create();
+        $notification2 = Notification::factory()->create();
+
+        $service = app(NotificationService::class);
+
+        $notifications = $service->getUserUnreadNotifications($user)->get();
+
+        expect($notifications->first()->id)
+            ->toBe($notification2->id)
+            ->and($notifications->last()->id)
+            ->toBe($notification1->id);
     });
 });

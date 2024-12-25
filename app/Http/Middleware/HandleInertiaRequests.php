@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Domain\Notification\Data\NotificationData;
+use App\Domain\Notification\Services\NotificationService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -25,6 +27,8 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $notificationService = app(NotificationService::class);
+
         return array_merge(parent::share($request), [
             'flash' => [
                 'success' => fn () => $request->session()->get('success'),
@@ -39,6 +43,9 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user()
                     ? $request->user()->only('id', 'name', 'email', 'role')
                     : null,
+                'notifications' => $request->user() ?
+                    NotificationData::collect($notificationService->getUserUnreadNotifications($request->user())->limit(5)->get()) :
+                    null,
             ],
         ]);
     }

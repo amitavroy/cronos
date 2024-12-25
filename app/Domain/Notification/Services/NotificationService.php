@@ -4,15 +4,15 @@ namespace App\Domain\Notification\Services;
 
 use App\Domain\Notification\Models\Notification;
 use App\Models\User;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\JoinClause;
 
 class NotificationService
 {
     /**
-     * @return LengthAwarePaginator<\App\Domain\Notification\Models\Notification>
+     * @return Builder<Notification>
      */
-    public function getUserUnreadNotifications(User $user): LengthAwarePaginator
+    public function getUserUnreadNotifications(User $user): Builder
     {
         return Notification::query()
             ->leftJoin('user_notification', function (JoinClause $join) use ($user) {
@@ -24,7 +24,7 @@ class NotificationService
                     ->where('user_notification.user_id', '=', $user->id);
             })
             ->whereNull('user_notification.id')
-            ->select(['notifications.id', 'notifications.title', 'notifications.message'])
-            ->paginate(10);
+            ->orderByDesc('notifications.id')
+            ->select(['notifications.id', 'notifications.title', 'notifications.message', 'notifications.created_at']);
     }
 }
