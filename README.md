@@ -2,7 +2,7 @@
 
 # CRONOs application
 
-![CRONOs Dashboard](https://ik.imagekit.io/xqpqzbbjz/cronos/cronos_dashboard_1.jpg?updatedAt=1734239402769)
+![CRONOs Dashboard](https://ik.imagekit.io/xqpqzbbjz/cronos/cronos_dashboard_3.jpg?updatedAt=1735098259405)
 
 Base theme taken from [Flowbite admin](https://github.com/themesberg/flowbite-admin-dashboard/tree/main)
 
@@ -24,3 +24,6 @@ Currently, these are the features that are almost working:
     - Right now the orders are system generated
     - Listing of Orders along with Order items is visible
     - A `CRON` runs every minute to add a random number of orders
+- Notifications
+    - An Admin can create a notification which will go to everyone
+    - Users can click on the Notificatoin bell icon to see all notifications
