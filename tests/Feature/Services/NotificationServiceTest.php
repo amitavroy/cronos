@@ -1,7 +1,7 @@
 <?php
 
-use App\Domain\Notification\Actions\SendNotificationToAll;
-use App\Domain\Notification\Actions\SendNotificationToUsers;
+use App\Domain\Notification\Actions\SendNotificationToAllAction;
+use App\Domain\Notification\Actions\SendNotificationToUsersAction;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\Notification\Services\NotificationService;
 use App\Models\User;
@@ -51,7 +51,7 @@ describe('NotificationService test', function () {
         $user3 = User::factory()->create();
         $notification = Notification::factory()->create();
 
-        $service = app(SendNotificationToUsers::class);
+        $service = app(SendNotificationToUsersAction::class);
 
         $service->execute(
             notification: $notification,
@@ -73,7 +73,7 @@ describe('NotificationService test', function () {
 
         $notification = Notification::factory()->create();
 
-        $action = app(SendNotificationToAll::class);
+        $action = app(SendNotificationToAllAction::class);
         $action->execute($notification);
 
         $count = DB::table('user_notification')->count();
@@ -86,7 +86,7 @@ describe('NotificationService test', function () {
 
         $notification = Notification::factory()->create();
 
-        $action = app(SendNotificationToAll::class);
+        $action = app(SendNotificationToAllAction::class);
 
         $action->execute($notification);
         $action->execute($notification); // sending again
