@@ -23,8 +23,8 @@ class SendNotificationToAllAction
         $users = User::select('id')->get()->toArray();
         $userIds = collect($users)->pluck('id');
 
-        $userIds->chunk(100)->each(function (Collection $chunk) use ($notification): void {
-            $action = app(SendNotificationToUsersAction::class);
+        $action = app(SendNotificationToUsersAction::class);
+        $userIds->chunk(100)->each(function (Collection $chunk) use ($notification, $action): void {
             $action->execute($notification, $chunk);
         });
     }
