@@ -9,6 +9,9 @@ use Illuminate\Database\Query\JoinClause;
 
 class GetUserUnreadNotificationsQuery
 {
+    /**
+     * @return Builder<Notification>
+     */
     public function execute(User $user): Builder
     {
         return Notification::query()

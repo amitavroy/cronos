@@ -4,9 +4,9 @@ use App\Domain\Notification\Actions\SendNotificationToAllAction;
 use App\Domain\Notification\Actions\SendNotificationToUsersAction;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\Notification\Queries\GetUserUnreadNotificationsQuery;
-use App\Domain\Notification\Services\NotificationService;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class MarkNotificationsAsReadForUserAction
 {
     /**
-     * @param Collection<(int|string), mixed> $notificationIds
+     * @param  Collection<(int|string), mixed>  $notificationIds
      */
     public function execute(Collection $notificationIds, User $user): void
     {
