@@ -3,9 +3,11 @@
 use App\Domain\Notification\Actions\SendNotificationToAllAction;
 use App\Domain\Notification\Actions\SendNotificationToUsersAction;
 use App\Domain\Notification\Models\Notification;
+use App\Domain\Notification\Queries\GetUserUnreadNotificationsQuery;
 use App\Domain\Notification\Services\NotificationService;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -16,15 +18,11 @@ describe('NotificationService test', function () {
         $notification = Notification::factory()->create();
         Notification::factory()->create();
 
-        DB::table('user_notification')->insert([
-            'user_id' => $user->id,
-            'notification_id' => $notification->id,
-            'read_at' => now(),
-        ]);
+        app(SendNotificationToAllAction::class)->execute($notification);
 
-        $service = app(NotificationService::class);
+        $query = app(GetUserUnreadNotificationsQuery::class);
 
-        $notifications = $service->getUserUnreadNotifications($user)->paginate(5);
+        $notifications = $query->execute($user)->paginate(5);
 
         expect($notifications->total())->toBe(1);
     });
@@ -35,9 +33,13 @@ describe('NotificationService test', function () {
         $notification1 = Notification::factory()->create();
         $notification2 = Notification::factory()->create();
 
-        $service = app(NotificationService::class);
+        actingAs($user);
+        app(SendNotificationToAllAction::class)->execute($notification1);
+        app(SendNotificationToAllAction::class)->execute($notification2);
 
-        $notifications = $service->getUserUnreadNotifications($user)->get();
+        $query = app(GetUserUnreadNotificationsQuery::class);
+
+        $notifications = $query->execute($user)->get();
 
         expect($notifications->first()->id)
             ->toBe($notification2->id)

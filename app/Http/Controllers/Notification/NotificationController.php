@@ -41,9 +41,8 @@ class NotificationController extends Controller
 
     public function store(
         NotificationData $notificationData,
-        Request          $request,
-    ): RedirectResponse
-    {
+        Request $request,
+    ): RedirectResponse {
         $this->authorize('create', Notification::class);
 
         $sendToAll = $request->input('sendToAll', false);

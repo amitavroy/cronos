@@ -10,8 +10,6 @@ class MarkNotificationsAsReadForUserAction
 {
     /**
      * @param Collection<(int|string), mixed> $notificationIds
-     * @param User $user
-     * @return void
      */
     public function execute(Collection $notificationIds, User $user): void
     {

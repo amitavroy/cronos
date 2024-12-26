@@ -1,5 +1,5 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3'
+import { Link, usePage, router } from '@inertiajs/vue3'
 import { computed, ref } from 'vue'
 import Icon from './Icon.vue'
 import NotificationItem from './NotificationItem.vue'
@@ -12,7 +12,10 @@ const user = computed(() => page.props?.auth?.user || null)
 const notifications = computed(() => page.props?.auth?.notifications || null)
 
 function markNotificationsAsRead() {
-  console.log(notifications.value)
+  const ids = notifications.value.map((notification) => notification.id)
+  router.post(route('notification.mark-read', { ids }), {
+    preserveScroll: true
+  })
 }
 </script>
 
@@ -64,7 +67,7 @@ function markNotificationsAsRead() {
             />
             <span
               class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white"
-              >{{ app.name || 'Flowbite' }}</span
+            >{{ app.name || 'Flowbite' }}</span
             >
           </Link>
           <form
@@ -474,7 +477,7 @@ function markNotificationsAsRead() {
                     :href="route('user-profile.show')"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Profile
+                  >Profile
                   </Link>
                 </li>
                 <li>
@@ -482,7 +485,7 @@ function markNotificationsAsRead() {
                     href="#"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Earnings</a
+                  >Earnings</a
                   >
                 </li>
                 <li>
