@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Notification;
 
 use App\Domain\Notification\Jobs\MarkNotificationsReadJob;
 use App\Domain\Notification\Models\Notification;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class MarkNotificationReadController extends Controller

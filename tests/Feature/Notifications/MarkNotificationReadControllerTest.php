@@ -26,4 +26,4 @@ describe('Mark notification read controller test', function () {
 
         Queue::assertPushed(MarkNotificationsReadJob::class);
     });
-})->only();
+});

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Notification;
 
 use App\Domain\Notification\Data\NotificationData;
 use App\Domain\Notification\Jobs\SendNotificationToAllJob;
 use App\Domain\Notification\Models\Notification;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class NotificationController extends Controller
 
     public function store(
         NotificationData $notificationData,
-        Request $request,
-    ): RedirectResponse {
+        Request          $request,
+    ): RedirectResponse
+    {
         $this->authorize('create', Notification::class);
 
         $sendToAll = $request->input('sendToAll', false);
