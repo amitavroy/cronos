@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Notification\Jobs\SendNotificationToAllJob;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -44,5 +45,23 @@ describe('Notification create test', function () {
 
         actingAs($customer);
         post(route('notification.store'), $postData)->assertForbidden();
+    });
+
+    it('dispatch a job to send notification to all users', function () {
+        \Illuminate\Support\Facades\Queue::fake();
+        $this->withoutVite();
+        $admin = User::factory()->admin()->create();
+        actingAs($admin);
+
+        $postData = [
+            'title' => 'Test Notification',
+            'message' => 'This is a test notification',
+            'sendToAll' => true,
+        ];
+
+        post(route('notification.store'), $postData);
+
+        $this->assertDatabaseCount('notifications', 1);
+        Queue::assertPushed(SendNotificationToAllJob::class);
     });
 });

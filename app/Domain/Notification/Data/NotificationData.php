@@ -19,7 +19,7 @@ class NotificationData extends Data
         return new self(
             title: $notification->title,
             message: $notification->message,
-            created_at: $notification->created_at
+            created_at: $notification->created_at,
         );
     }
 

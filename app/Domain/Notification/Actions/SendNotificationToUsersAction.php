@@ -6,12 +6,12 @@ use App\Domain\Notification\Models\Notification;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
-class SendNotificationToUsers
+class SendNotificationToUsersAction
 {
     /**
      * Make entry for users who should get a specific notification.
      *
-     * @param  \Illuminate\Support\Collection<int|string, mixed>  $userIds
+     * @param  Collection<int|string, mixed>  $userIds
      */
     public function execute(Notification $notification, Collection $userIds): void
     {

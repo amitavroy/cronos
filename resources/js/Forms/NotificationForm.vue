@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3'
 import InputText from '../Components/InputText.vue'
+import InputCheckbox from '../Components/InputCheckbox.vue'
 import { IInitialNotificationData } from '../types'
 
 const { initialData, url, isCreate } = defineProps({
@@ -21,6 +22,7 @@ const { initialData, url, isCreate } = defineProps({
 const form = useForm({
   title: initialData.title || '',
   message: initialData.message || '',
+  sendToAll: true,
 })
 
 function submit() {
@@ -41,6 +43,11 @@ function submit() {
       name="Notification message"
       placeholder="Enter the message"
       :error-message="form.errors?.message"
+    />
+    <InputCheckbox
+      v-model="form.sendToAll"
+      name="sendToAll"
+      text="Send to all users"
     />
 
     <button

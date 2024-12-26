@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Notification\Data\NotificationData;
+use App\Domain\Notification\Jobs\SendNotificationToAllJob;
 use App\Domain\Notification\Models\Notification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
@@ -36,11 +38,19 @@ class NotificationController extends Controller
         return inertia('Notification/Create');
     }
 
-    public function store(NotificationData $notificationData): RedirectResponse
-    {
+    public function store(
+        NotificationData $notificationData,
+        Request $request,
+    ): RedirectResponse {
         $this->authorize('create', Notification::class);
 
-        Notification::create($notificationData->toArray());
+        $sendToAll = $request->input('sendToAll', false);
+
+        $notification = Notification::create($notificationData->toArray());
+
+        if ($sendToAll) {
+            SendNotificationToAllJob::dispatch($notification);
+        }
 
         return redirect()->route('notification.index');
     }
