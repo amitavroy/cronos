@@ -4,6 +4,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MarkNotificationReadController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -28,4 +29,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store']);
+    Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
 });

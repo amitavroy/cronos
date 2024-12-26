@@ -10,6 +10,10 @@ const page = usePage()
 const app = computed(() => page.props?.app || null)
 const user = computed(() => page.props?.auth?.user || null)
 const notifications = computed(() => page.props?.auth?.notifications || null)
+
+function markNotificationsAsRead() {
+  console.log(notifications.value)
+}
 </script>
 
 <template>
@@ -127,7 +131,7 @@ const notifications = computed(() => page.props?.auth?.notifications || null)
           >
             <span class="sr-only">View notifications</span>
             <!-- Bell icon -->
-            <Icon name="bell" />
+            <Icon name="bell" @click="markNotificationsAsRead" />
           </button>
           <!-- Dropdown menu -->
           <div

@@ -9,6 +9,7 @@ use Spatie\LaravelData\Data;
 class NotificationData extends Data
 {
     public function __construct(
+        public ?int $id,
         public string $title,
         public string $message,
         private readonly ?Carbon $created_at = null,
@@ -17,6 +18,7 @@ class NotificationData extends Data
     public static function fromModel(Notification $notification): self
     {
         return new self(
+            id: $notification->id,
             title: $notification->title,
             message: $notification->message,
             created_at: $notification->created_at,
