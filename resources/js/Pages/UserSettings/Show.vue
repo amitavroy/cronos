@@ -5,6 +5,7 @@ import PageContainer from '../../Components/PageContainer.vue'
 import { useForm } from '@inertiajs/vue3'
 import InputText from '../../Components/InputText.vue'
 import ChangePasswordForm from '../../Forms/ChangePasswordForm.vue'
+import { ref } from 'vue'
 
 const { user } = defineProps({
   user: Object,
@@ -24,9 +25,27 @@ const form = useForm({
   country: user.country || null,
 })
 
+const profilePicForm = useForm({
+  profile_pic: null,
+})
+
 function submit() {
   form.post(route('user-profile.update'))
 }
+
+const fileInput = ref(null)
+
+function triggerFileInput() {
+  fileInput.value.click()
+}
+
+const handleFileUpload = (event) => {
+  const file = event.target.files[0]
+  profilePicForm.profile_pic = file
+  profilePicForm.submit('post', route('user.profile-pic.upload'))
+}
+
+const handleProfilePicFormSubmit = () => {}
 </script>
 
 <template>
@@ -48,7 +67,7 @@ function submit() {
           >
             <img
               class="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
-              src="https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green-2x.png"
+              :src="user?.profile?.profile_pic"
               alt="Jese"
             />
             <div>
@@ -58,30 +77,42 @@ function submit() {
               <div class="mb-4 text-sm text-gray-500 dark:text-gray-400">
                 JPG, GIF or PNG. Max size of 800K
               </div>
-              <div class="flex items-center space-x-4">
-                <button
-                  type="button"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              <div>
+                <form
+                  @submit.prevent="handleProfilePicFormSubmit"
+                  class="flex items-center space-x-4"
                 >
-                  <svg
-                    class="w-4 h-4 mr-2 -ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <button
+                    @click="triggerFileInput"
+                    type="button"
+                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    <path
-                      d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"
-                    ></path>
-                    <path d="M9 13h2v5a1 1 0 11-2 0v-5z"></path>
-                  </svg>
-                  Upload picture
-                </button>
-                <button
-                  type="button"
-                  class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                >
-                  Delete
-                </button>
+                    <svg
+                      class="w-4 h-4 mr-2 -ml-1"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"
+                      ></path>
+                      <path d="M9 13h2v5a1 1 0 11-2 0v-5z"></path>
+                    </svg>
+                    Upload picture
+                  </button>
+                  <input
+                    ref="fileInput"
+                    type="file"
+                    class="hidden"
+                    @change="handleFileUpload"
+                  />
+                  <button
+                    type="button"
+                    class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                    Delete
+                  </button>
+                </form>
               </div>
             </div>
           </div>

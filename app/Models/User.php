@@ -7,6 +7,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -57,5 +58,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Notification::class, 'user_notification')
             ->withPivot('read_at')
             ->withTimestamps();
+    }
+
+    /**
+     * @return HasOne<UserProfile, covariant $this>
+     */
+    public function profile(): HasOne
+    {
+        return $this->hasOne(UserProfile::class);
     }
 }

@@ -132,4 +132,6 @@ return [
         'password' => env('DEFAULT_PASSWORD'),
     ],
 
+    'default_profile_pic' => 'https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green-2x.png',
+
 ];

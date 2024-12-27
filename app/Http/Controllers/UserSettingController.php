@@ -13,7 +13,7 @@ class UserSettingController extends Controller
 {
     public function show(): Response|ResponseFactory
     {
-        $user = Auth::user();
+        $user = Auth::user()?->load('profile');
 
         return inertia('UserSettings/Show', [
             'user' => $user,

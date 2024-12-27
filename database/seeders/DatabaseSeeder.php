@@ -7,6 +7,7 @@ use App\Domain\Notification\Models\Notification;
 use App\Domain\Product\Models\Product;
 use App\Enum\UserRole;
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -17,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        User::factory(10)->hasProfile()->create();
         Notification::factory(10)->create();
 
-        User::updateOrCreate([
+        $me = User::updateOrCreate([
             'email' => config('app.default_credentials.email'),
         ], [
             'name' => 'Amitav Roy',
@@ -30,6 +31,8 @@ class DatabaseSeeder extends Seeder
             'country' => 'India',
             'role' => UserRole::ADMIN->value,
         ]);
+
+        UserProfile::create(['user_id' => $me->id]);
 
         User::factory(10)->create([
             'role' => UserRole::CUSTOMER->value,
