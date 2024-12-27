@@ -55,4 +55,13 @@ class NotificationController extends Controller
 
         return redirect()->route('notification.index');
     }
+
+    public function destroy(Notification $notification): RedirectResponse
+    {
+        $this->authorize('delete', $notification);
+
+        $notification->delete();
+
+        return redirect()->route('notification.index');
+    }
 }

@@ -28,6 +28,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/product', ProductController::class);
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
-    Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store']);
+    Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
 });
