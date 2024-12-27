@@ -24,7 +24,7 @@ class UserProfilePolicy
 
     public function create(User $user): bool
     {
-        return Auth::check();
+        return Auth::user()->id === $user->id;
     }
 
     public function update(User $user, UserProfile $userProfile): bool
