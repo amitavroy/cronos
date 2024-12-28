@@ -22,29 +22,22 @@ Route::post('/login', [LoginController::class, 'store'])->name('do-login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', HomeController::class)->name('home');
     Route::post('/logout', LogoutController::class)->name('logout');
-
-    Route::get('/user/profile', [UserSettingController::class, 'show'])->name('user-profile.show');
-    Route::post('/user/profile', [UserSettingController::class, 'update'])->name('user-profile.update');
-    Route::post('/user/password-change', UserPasswordChangeController::class)->name('user.password.change');
-    Route::post('/user/profile-pic-upload', ProfilePicUploadController::class)->name('user.profile-pic.upload');
-    Route::resource('/user', UserController::class);
-
-    Route::resource('/product', ProductController::class);
-    Route::post('/product/feature-image/{product}', ProductImageUploadController::class)->name('product.upload-image');
+    
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
+
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
 });
 
 Route::get('/private-image', function (Request $request) {
-    if (! $request->has('filename')) {
+    if (!$request->has('filename')) {
         abort(404);
     }
 
     $filename = $request->input('filename');
-    $path = storage_path('app/private/'.$filename);
-    if (! Storage::exists($filename)) {
+    $path = storage_path('app/private/' . $filename);
+    if (!Storage::exists($filename)) {
         abort(404);
     }
 
