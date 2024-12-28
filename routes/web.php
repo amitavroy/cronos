@@ -7,7 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Notification\MarkNotificationReadController;
 use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\OrderController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\PrivateImageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -22,18 +22,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
+    Route::get('/private-image', PrivateImageController::class)->name('private-image');
 });
-
-Route::get('/private-image', function (Request $request) {
-    if (! $request->has('filename')) {
-        abort(404);
-    }
-
-    $filename = $request->input('filename');
-    $path = storage_path('app/private/'.$filename);
-    if (! Storage::exists($filename)) {
-        abort(404);
-    }
-
-    return response()->file($path);
-})->middleware('auth')->name('private-image');
