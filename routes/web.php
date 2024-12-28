@@ -8,6 +8,7 @@ use App\Http\Controllers\Notification\MarkNotificationReadController;
 use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductImageUploadController;
 use App\Http\Controllers\ProfilePicUploadController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordChangeController;
@@ -29,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/user', UserController::class);
 
     Route::resource('/product', ProductController::class);
+    Route::post('/product/feature-image/{product}', ProductImageUploadController::class)->name('product.upload-image');
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);

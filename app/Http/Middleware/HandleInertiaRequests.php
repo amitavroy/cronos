@@ -36,13 +36,13 @@ class HandleInertiaRequests extends Middleware
                 ->load('profile')
                 ->only('id', 'name', 'email', 'role');
 
-            $authUser['profile_pic'] = $request->user()->profile->profile_pic;
+            $authUser['profile_pic'] = $request->user()->profile->profile_pic ?? null;
         }
 
         return array_merge(parent::share($request), [
             'flash' => [
-                'success' => fn() => $request->session()->get('success'),
-                'error' => fn() => $request->session()->get('error'),
+                'success' => fn () => $request->session()->get('success'),
+                'error' => fn () => $request->session()->get('error'),
             ],
             'app' => [
                 'name' => config('app.name'),

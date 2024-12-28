@@ -133,5 +133,6 @@ return [
     ],
 
     'default_profile_pic' => 'https://flowbite-admin-dashboard.vercel.app/images/users/bonnie-green-2x.png',
+    'default_product_pic' => 'https://flowbite-admin-dashboard.vercel.app/images/products/iphone.png',
 
 ];

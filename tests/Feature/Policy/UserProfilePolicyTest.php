@@ -3,11 +3,12 @@
 use App\Models\UserProfile;
 use App\Policies\UserProfilePolicy;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
-describe('User profile policy', function() {
+describe('User profile policy', function () {
     it('allows only admin to view any profile', function () {
         $admin = \App\Models\User::factory()->admin()->create();
         $manager = \App\Models\User::factory()->manager()->create();

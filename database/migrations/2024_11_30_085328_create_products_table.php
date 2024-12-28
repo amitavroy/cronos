@@ -14,6 +14,7 @@ return new class extends Migration
             $table->float('price');
             $table->string('category');
             $table->text('description');
+            $table->string('featured_image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
