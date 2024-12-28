@@ -8,25 +8,25 @@ import { useForm, router } from '@inertiajs/vue3'
 import { ref } from 'vue'
 
 const { product } = defineProps({
-  product: Object
+  product: Object,
 })
 
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   {
     name: 'View Products',
-    link: route('product.index')
+    link: route('product.index'),
   },
   {
     name: 'Add Products',
-    link: null
-  }
+    link: null,
+  },
 ]
 
 const fileInput = ref(null)
 
 const productPicForm = useForm({
-  featured_image: null
+  featured_image: null,
 })
 
 function triggerFileInput() {
@@ -37,13 +37,15 @@ const handleFileUpload = (event) => {
   productPicForm.featured_image = event.target.files[0]
   productPicForm.submit(
     'post',
-    route('product.add-feature-image', { product: product.id })
+    route('product.add-feature-image', { product: product.id }),
   )
 }
 
 const handleProductImageDelete = () => {
   if (confirm('Sure you delete this image?')) {
-    router.delete(route('product.remove-feature-image', { product: product.id }))
+    router.delete(
+      route('product.remove-feature-image', { product: product.id }),
+    )
   }
 }
 </script>
