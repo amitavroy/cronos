@@ -31,7 +31,7 @@ class Product extends Model
     protected function featuredImage(): Attribute
     {
         return Attribute::make(
-            get: fn (?string $value): mixed => $value
+            get: fn(?string $value): mixed => $value
                 ? route('private-image', ['filename' => $value])
                 : config('app.default_product_pic')
         );

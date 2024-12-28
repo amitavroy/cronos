@@ -4,29 +4,29 @@ import ProductForm from '../../Forms/ProductForm.vue'
 import ContentCard from '../../Components/ContentCard.vue'
 import PageContainer from '../../Components/PageContainer.vue'
 import PageTitle from '../../Components/PageTitle.vue'
-import { useForm } from '@inertiajs/vue3'
+import { useForm, router } from '@inertiajs/vue3'
 import { ref } from 'vue'
 
 const { product } = defineProps({
-  product: Object,
+  product: Object
 })
 
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   {
     name: 'View Products',
-    link: route('product.index'),
+    link: route('product.index')
   },
   {
     name: 'Add Products',
-    link: null,
-  },
+    link: null
+  }
 ]
 
 const fileInput = ref(null)
 
 const productPicForm = useForm({
-  featured_image: null,
+  featured_image: null
 })
 
 function triggerFileInput() {
@@ -37,8 +37,14 @@ const handleFileUpload = (event) => {
   productPicForm.featured_image = event.target.files[0]
   productPicForm.submit(
     'post',
-    route('product.upload-image', { product: product.id }),
+    route('product.add-feature-image', { product: product.id })
   )
+}
+
+const handleProductImageDelete = () => {
+  if (confirm('Sure you delete this image?')) {
+    router.delete(route('product.remove-feature-image', { product: product.id }))
+  }
 }
 </script>
 
@@ -103,6 +109,7 @@ const handleFileUpload = (event) => {
                     @change="handleFileUpload"
                   />
                   <button
+                    @click="handleProductImageDelete"
                     type="button"
                     class="py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
