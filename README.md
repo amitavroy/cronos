@@ -14,6 +14,7 @@ Currently, these are the features that are almost working:
     - Listing of user as part of the CRUD is available
     - User can be added, edited and deleted
     - A user can go to the Profile page and change profile detail
+    - A user can also upload his/her profile picture
     - A user can also change his/her password from the profile page
     - There are currently three roles in the app - Customer, Manager and Admin
 - Products

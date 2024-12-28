@@ -1,15 +1,17 @@
 <script setup>
 import { ref } from 'vue'
 import Rupee from '../../Components/Rupee.vue'
+import { Link } from '@inertiajs/vue3'
+
 const { topCustomers, topProducts } = defineProps({
   topCustomers: {
     type: Object,
-    required: true,
+    required: true
   },
   topProducts: {
     type: Object,
-    required: true,
-  },
+    required: true
+  }
 })
 const hideCustomers = ref(true)
 const hideProducts = ref(false)
@@ -79,15 +81,19 @@ function toggleTabVisibility() {
           >
             <div class="flex items-center justify-between">
               <div class="flex items-center min-w-0">
-                <img
-                  class="flex-shrink-0 w-10 h-10"
-                  src="https://flowbite-admin-dashboard.vercel.app/images/products/iphone.png"
-                  alt="imac"
-                />
+                <Link class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
+                      :href="route('product.show', {product: product.id})" as="div">
+                  <img
+                    class="flex-shrink-0 w-10 h-10"
+                    :src="product.featured_image"
+                    alt="imac"
+                  />
+                </Link>
                 <div class="ml-3">
-                  <p class="font-medium text-gray-900 truncate dark:text-white">
+                  <Link class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
+                        :href="route('product.show', {product: product.id})" as="p">
                     {{ product.name }}
-                  </p>
+                  </Link>
                   <div
                     class="flex items-center justify-start flex-1 text-sm text-green-500 dark:text-green-400"
                   >

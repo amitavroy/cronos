@@ -22,5 +22,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
+
     Route::get('/private-image', PrivateImageController::class)->name('private-image');
 });
