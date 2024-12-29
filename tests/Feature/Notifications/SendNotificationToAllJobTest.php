@@ -2,6 +2,7 @@
 
 use App\Domain\Notification\Jobs\SendNotificationToAllJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\assertDatabaseCount;
 
 uses(RefreshDatabase::class);

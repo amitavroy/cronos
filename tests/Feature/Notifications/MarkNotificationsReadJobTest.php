@@ -2,6 +2,7 @@
 
 use App\Domain\Notification\Jobs\MarkNotificationsReadJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
 use function Pest\Laravel\assertDatabaseHas;
 
 uses(RefreshDatabase::class);
