@@ -6,12 +6,12 @@ import { Link } from '@inertiajs/vue3'
 const { topCustomers, topProducts } = defineProps({
   topCustomers: {
     type: Object,
-    required: true
+    required: true,
   },
   topProducts: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 const hideCustomers = ref(true)
 const hideProducts = ref(false)
@@ -81,8 +81,11 @@ function toggleTabVisibility() {
           >
             <div class="flex items-center justify-between">
               <div class="flex items-center min-w-0">
-                <Link class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
-                      :href="route('product.show', {product: product.id})" as="div">
+                <Link
+                  class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
+                  :href="route('product.show', { product: product.id })"
+                  as="div"
+                >
                   <img
                     class="flex-shrink-0 w-10 h-10"
                     :src="product.featured_image"
@@ -90,8 +93,11 @@ function toggleTabVisibility() {
                   />
                 </Link>
                 <div class="ml-3">
-                  <Link class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
-                        :href="route('product.show', {product: product.id})" as="p">
+                  <Link
+                    class="font-medium text-gray-900 truncate dark:text-white cursor-pointer"
+                    :href="route('product.show', { product: product.id })"
+                    as="p"
+                  >
                     {{ product.name }}
                   </Link>
                   <div
