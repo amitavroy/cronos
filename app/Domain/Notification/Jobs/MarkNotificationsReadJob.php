@@ -13,18 +13,17 @@ class MarkNotificationsReadJob implements ShouldQueue
     use Queueable;
 
     /**
-     * @param  Collection<(int|string), mixed>  $notificationIds
+     * @param Collection<(int|string), mixed> $notificationIds
      */
     public function __construct(
-        private readonly ?User $user,
+        private readonly User       $user,
         private readonly Collection $notificationIds
-    ) {}
+    )
+    {
+    }
 
     public function handle(MarkNotificationsAsReadForUserAction $action): void
     {
-        if ($this->user === null) {
-            return;
-        }
         $action->execute(
             notificationIds: $this->notificationIds,
             user: $this->user
