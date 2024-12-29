@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Notification;
 
 use App\Domain\Notification\Data\NotificationData;
 use App\Domain\Notification\Jobs\SendNotificationToAllJob;
+use App\Domain\Notification\Jobs\SendNotificationToUsersJob;
 use App\Domain\Notification\Models\Notification;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,7 +38,13 @@ class NotificationController extends Controller
     {
         $this->authorize('create', Notification::class);
 
-        return inertia('Notification/Create');
+        $users = User::select(['name as label', 'id as value'])
+            ->orderBy('name')
+            ->get();
+
+        return inertia('Notification/Create', [
+            'users' => $users,
+        ]);
     }
 
     public function store(
@@ -51,6 +59,13 @@ class NotificationController extends Controller
 
         if ($sendToAll) {
             SendNotificationToAllJob::dispatch($notification);
+        }
+
+        if (! $sendToAll && $request->has('users')) {
+            SendNotificationToUsersJob::dispatch(
+                notification: $notification,
+                userIds: collect($request->input('users'))
+            );
         }
 
         return redirect()->route('notification.index');
