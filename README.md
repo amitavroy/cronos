@@ -27,4 +27,5 @@ Currently, these are the features that are almost working:
     - A `CRON` runs every minute to add a random number of orders
 - Notifications
     - An Admin can create a notification which will go to everyone
+    - An Admin can create a notification and send to specific users only
     - Users can click on the Notificatoin bell icon to see all notifications
