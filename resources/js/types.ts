@@ -17,3 +17,8 @@ export interface IInitialNotificationData {
   title: string
   message: string
 }
+
+export interface ISegmentData {
+  name: string
+  description: string
+}
