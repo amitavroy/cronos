@@ -23,28 +23,18 @@ class SegmentController extends Controller
         ]);
     }
 
-    public function create()
-    {
-    }
+    public function create() {}
 
-    public function store(Request $request)
-    {
-    }
+    public function store(Request $request) {}
 
     public function show(Segment $segment)
     {
         return $segment;
     }
 
-    public function edit($id)
-    {
-    }
+    public function edit($id) {}
 
-    public function update(Request $request, $id)
-    {
-    }
+    public function update(Request $request, $id) {}
 
-    public function destroy($id)
-    {
-    }
+    public function destroy($id) {}
 }

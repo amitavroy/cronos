@@ -3,7 +3,7 @@ import Icon from './Icon.vue'
 import { Link } from '@inertiajs/vue3'
 
 const { links } = defineProps({
-  links: Object
+  links: Object,
 })
 </script>
 
@@ -46,7 +46,7 @@ const { links } = defineProps({
             v-else
             class="ml-1 text-gray-400 md:ml-2 dark:text-gray-500"
             aria-current="page"
-          >{{ link.name }}</span
+            >{{ link.name }}</span
           >
         </div>
       </li>

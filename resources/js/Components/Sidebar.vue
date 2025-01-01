@@ -14,8 +14,8 @@ const sidebarMenuItems = [
       { name: 'Add products', href: route('product.create') },
       { name: 'View orders', href: route('order.index') },
       { name: 'View customers', href: route('customer.index') },
-      { name: 'Segments', href: route('segment.index') }
-    ]
+      { name: 'Segments', href: route('segment.index') },
+    ],
   },
   {
     parent: 'Users',
@@ -23,9 +23,9 @@ const sidebarMenuItems = [
     subMenu: true,
     subItems: [
       { name: 'View', href: route('user.index') },
-      { name: 'Add', href: route('user.create') }
-    ]
-  }
+      { name: 'Add', href: route('user.create') },
+    ],
+  },
 ]
 </script>
 

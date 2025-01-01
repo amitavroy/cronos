@@ -10,7 +10,7 @@ const { segments } = defineProps({ segments: Object })
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   { name: 'Segments', link: route('segment.index') },
-  { name: 'View segments', link: null }
+  { name: 'View segments', link: null },
 ]
 </script>
 
