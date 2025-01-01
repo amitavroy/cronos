@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Segment extends Model
 {
+    /** @use HasFactory<SegmentFactory> */
     use HasFactory, SoftDeletes;
 
     protected static function newFactory(): SegmentFactory
