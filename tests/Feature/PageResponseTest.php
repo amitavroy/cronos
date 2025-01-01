@@ -154,4 +154,14 @@ describe('Testing all page response', function () {
 
         get(route('segment.show', ['segment' => $segment]))->assertOk();
     });
+
+    it('loads the segment create page', function () {
+        $this->withoutVite();
+        $user = User::factory()->admin()->create();
+        $segment = Segment::factory()->create();
+
+        actingAs($user);
+
+        get(route('segment.create', ['segment' => $segment]))->assertOk();
+    });
 });
