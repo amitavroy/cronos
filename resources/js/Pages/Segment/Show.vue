@@ -8,20 +8,26 @@ import SegmentForm from './SegmentForm.vue'
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   { name: 'Segments', link: route('segment.index') },
-  { name: 'Create segment', link: null },
+  { name: 'Show segment', link: null },
 ]
+
+const { segment } = defineProps({ segment: Object })
 </script>
 
 <template>
   <div>
     <PageContainer>
       <Breadcrumb :links="breadCrumb" />
-      <PageTitle title="Create new Segment" />
+      <PageTitle title="Show Segment" />
     </PageContainer>
 
     <div class="grid">
       <ContentCard>
-        <SegmentForm :url="route('segment.store')" :is-create="true" />
+        <SegmentForm
+          :url="route('segment.store')"
+          :is-create="false"
+          :initial-data="segment"
+        />
       </ContentCard>
     </div>
   </div>

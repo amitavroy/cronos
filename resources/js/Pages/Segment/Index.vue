@@ -11,7 +11,7 @@ const { segments } = defineProps({ segments: Object })
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   { name: 'Segments', link: route('segment.index') },
-  { name: 'View segments', link: null }
+  { name: 'View segments', link: null },
 ]
 </script>
 
@@ -73,7 +73,7 @@ const breadCrumb = [
           id="createSegmentButton"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           type="button"
-        >Create new Segment
+          >Create new Segment
         </Link>
       </div>
     </PageContainer>

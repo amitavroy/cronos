@@ -6,21 +6,21 @@ import { ISegmentData } from '../../types'
 const { initialData, url, isCreate } = defineProps({
   initialData: {
     type: Object as () => ISegmentData,
-    default: () => ({})
+    default: () => ({}),
   },
   url: {
     type: String,
-    required: true
+    required: true,
   },
   isCreate: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 })
 
 const form = useForm({
   name: initialData.name || '',
-  description: initialData.description || ''
+  description: initialData.description || '',
 })
 
 function submit() {
