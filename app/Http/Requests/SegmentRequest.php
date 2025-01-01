@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enum\UserRole;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SegmentRequest extends FormRequest
 {
@@ -17,6 +19,6 @@ class SegmentRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return true;
+        return Auth::user()->role === UserRole::ADMIN->value;
     }
 }
