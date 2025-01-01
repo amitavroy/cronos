@@ -19,7 +19,7 @@ class SegmentController extends Controller
         $this->authorize('viewAny', Segment::class);
 
         $segments = Segment::query()
-            ->orderBy('name')
+            ->orderByDesc('id')
             ->paginate(10);
 
         return inertia('Segment/Index', [
@@ -27,9 +27,11 @@ class SegmentController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): Response|ResponseFactory
     {
         $this->authorize('create', Segment::class);
+
+        return inertia('Segment/Create');
     }
 
     public function store(SegmentRequest $request): RedirectResponse

@@ -28,4 +28,15 @@ describe('Segment create test', function () {
 
         assertDatabaseHas('segments', $postData);
     });
+
+    it('redirects to the index page', function () {
+        $user = \App\Models\User::factory()->admin()->create();
+
+        actingAs($user);
+
+        $postData = ['name' => 'Segment 1', 'description' => 'Description 1'];
+
+        post(route('segment.store'), $postData)
+            ->assertRedirect(route('segment.index'));
+    });
 });
