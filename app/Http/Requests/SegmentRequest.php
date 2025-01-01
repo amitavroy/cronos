@@ -13,7 +13,6 @@ class SegmentRequest extends FormRequest
         return [
             'name' => ['required'],
             'description' => ['required'],
-            'rules' => ['required'],
         ];
     }
 
