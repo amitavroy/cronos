@@ -8,6 +8,7 @@ use App\Http\Controllers\Notification\MarkNotificationReadController;
 use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PrivateImageController;
+use App\Http\Controllers\SegmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -19,6 +20,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
+
+    Route::resource('/segment', SegmentController::class);
 
     Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');

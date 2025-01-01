@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\Product\Models\Product;
+use App\Domain\Segment\Models\Segment;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -133,5 +134,24 @@ describe('Testing all page response', function () {
         actingAs($user);
 
         get(route('notification.create'))->assertOk();
+    });
+
+    it('loads the segment listing page', function () {
+        $this->withoutVite();
+        $user = User::factory()->admin()->create();
+
+        actingAs($user);
+
+        get(route('segment.index'))->assertOk();
+    });
+
+    it('loads the segment view page', function () {
+        $this->withoutVite();
+        $user = User::factory()->admin()->create();
+        $segment = Segment::factory()->create();
+
+        actingAs($user);
+
+        get(route('segment.show', ['segment' => $segment]))->assertOk();
     });
 });

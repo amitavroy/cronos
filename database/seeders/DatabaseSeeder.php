@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Actions\CreateRandomOrder;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\Product\Models\Product;
+use App\Domain\Segment\Models\Segment;
 use App\Enum\UserRole;
 use App\Models\User;
 use App\Models\UserProfile;
@@ -41,6 +42,8 @@ class DatabaseSeeder extends Seeder
         $this->createProducts();
 
         app(CreateRandomOrder::class)->handle(random_int(10, 30));
+
+        Segment::factory(10)->create();
     }
 
     private function createProducts(): void
