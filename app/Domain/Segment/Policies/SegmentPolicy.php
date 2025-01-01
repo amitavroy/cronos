@@ -2,7 +2,6 @@
 
 namespace App\Domain\Segment\Policies;
 
-use App\Domain\Segment\Models\Segment;
 use App\Enum\UserRole;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
