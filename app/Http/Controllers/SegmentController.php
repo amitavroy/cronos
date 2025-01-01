@@ -46,9 +46,11 @@ class SegmentController extends Controller
         return redirect()->route('segment.index');
     }
 
-    public function show(Segment $segment)
+    public function show(Segment $segment): Response|ResponseFactory
     {
-        return $segment;
+        return inertia('Segment/Show', [
+            'segment' => $segment,
+        ]);
     }
 
     public function edit($id) {}

@@ -50,9 +50,9 @@ function deleteSegment(segmentId) {
         <td
           class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          <Link :href="route('segment.show', { segment: segment.id })">{{
-            segment.name
-          }}</Link>
+          <Link :href="route('segment.show', { segment: segment.id })"
+            >{{ segment.name }}
+          </Link>
         </td>
         <td
           class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400"
@@ -61,7 +61,7 @@ function deleteSegment(segmentId) {
         </td>
         <td class="p-4 space-x-2 whitespace-nowrap">
           <Link
-            :href="route('segment.index', { segment: segment.id })"
+            :href="route('segment.show', { segment: segment.id })"
             id="updateProductButton"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
