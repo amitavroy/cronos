@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class SegmentRequest extends FormRequest
 {
+    /**
+     * @return array<string, array<int, string>>
+     */
     public function rules(): array
     {
         return [

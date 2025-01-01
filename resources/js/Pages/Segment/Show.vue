@@ -2,7 +2,6 @@
 import PageContainer from '../../Components/PageContainer.vue'
 import Breadcrumb from '../../Components/Breadcrumb.vue'
 import PageTitle from '../../Components/PageTitle.vue'
-import ContentCard from '../../Components/ContentCard.vue'
 import SegmentForm from './SegmentForm.vue'
 
 const breadCrumb = [
@@ -11,7 +10,7 @@ const breadCrumb = [
   { name: 'Show segment', link: null },
 ]
 
-const { segment } = defineProps({ segment: Object })
+const { segment, rules } = defineProps({ segment: Object, rules: Object })
 </script>
 
 <template>
@@ -22,13 +21,12 @@ const { segment } = defineProps({ segment: Object })
     </PageContainer>
 
     <div class="grid">
-      <ContentCard>
-        <SegmentForm
-          :url="route('segment.store')"
-          :is-create="false"
-          :initial-data="segment"
-        />
-      </ContentCard>
+      <SegmentForm
+        :url="route('segment.store')"
+        :is-create="false"
+        :initial-data="segment"
+        :rules="rules"
+      />
     </div>
   </div>
 </template>

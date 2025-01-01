@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Segment\Models\Segment;
+use App\Domain\Segment\Services\SegmentRuleService;
 use App\Http\Requests\SegmentRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
@@ -46,10 +47,15 @@ class SegmentController extends Controller
         return redirect()->route('segment.index');
     }
 
-    public function show(Segment $segment): Response|ResponseFactory
-    {
+    public function show(
+        Segment $segment,
+        SegmentRuleService $segmentRuleService
+    ): Response|ResponseFactory {
+        $rules = $segmentRuleService->getRuleNames();
+
         return inertia('Segment/Show', [
             'segment' => $segment,
+            'rules' => $rules,
         ]);
     }
 
