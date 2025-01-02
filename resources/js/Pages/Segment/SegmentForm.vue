@@ -3,35 +3,36 @@ import { useForm } from '@inertiajs/vue3'
 import InputText from '../../Components/InputText.vue'
 import { ISegmentData } from '../../types'
 import ContentCard from '../../Components/ContentCard.vue'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import VueSelect from 'vue3-select-component'
 
 const { initialData, url, isCreate, rules } = defineProps({
   initialData: {
     type: Object as () => ISegmentData,
-    default: () => ({}),
+    default: () => ({})
   },
   url: {
     type: String,
-    required: true,
+    required: true
   },
   isCreate: {
     type: Boolean,
-    default: true,
+    default: true
   },
   rules: {
     type: Array,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const form = useForm({
   name: initialData.name || '',
   description: initialData.description || '',
-  rules: [],
+  rules: []
 })
 
 const rulesOptions = reactive([])
+const selected = ref(null)
 
 function submit() {
   isCreate ? form.post(url) : form.patch(url)
@@ -41,10 +42,22 @@ onMounted(() => {
   rules.forEach((rule) => {
     rulesOptions.push({
       label: rule.friendly_name,
-      value: rule.machine_name,
+      value: rule.machine_name
     })
   })
 })
+
+const addNewRuleToSegment = () => {
+  if (form.rules.find((rule) => rule.rule_name === selected.value)) {
+    return
+  }
+
+  if (selected.value === 'total_purchase_value') {
+    form.rules.push({ 'rule_name': 'total_purchase_value', 'total_purchase_value': 0 })
+  } else if (selected.value === 'minimum_purchase_value') {
+    form.rules.push({ 'rule_name': 'minimum_purchase_value', 'minimum_purchase_value': 0 })
+  }
+}
 </script>
 
 <template>
@@ -73,14 +86,28 @@ onMounted(() => {
       </form>
     </ContentCard>
     <ContentCard>
-      <div>
+      <div class="block">
         <pre>{{ form }}</pre>
         <VueSelect
-          v-model="form.rules"
+          v-model="selected"
           :options="rulesOptions"
           placeholder="Select a rule"
           class="mb-4"
         />
+      </div>
+      <div class="block">
+        <button
+          @click="addNewRuleToSegment"
+          type="submit"
+          class="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        >
+          + Add rule
+        </button>
+      </div>
+      <div class="block">
+        <div v-for="rule in form.rules" :key="rule">
+          <p>Adding rule {{ rule.rule_name }}</p>
+        </div>
       </div>
     </ContentCard>
   </div>
