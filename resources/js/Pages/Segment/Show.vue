@@ -22,7 +22,7 @@ const { segment, rules } = defineProps({ segment: Object, rules: Object })
 
     <div class="grid">
       <SegmentForm
-        :url="route('segment.store')"
+        :url="route('segment.update', { segment: segment.id })"
         :is-create="false"
         :initial-data="segment"
         :rules="rules"

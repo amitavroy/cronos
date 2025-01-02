@@ -48,9 +48,10 @@ class SegmentController extends Controller
     }
 
     public function show(
-        Segment $segment,
+        Segment            $segment,
         SegmentRuleService $segmentRuleService
-    ): Response|ResponseFactory {
+    ): Response|ResponseFactory
+    {
         $rules = $segmentRuleService->getRuleNames();
 
         return inertia('Segment/Show', [
@@ -59,9 +60,21 @@ class SegmentController extends Controller
         ]);
     }
 
-    public function edit($id) {}
+    public function update(Request $request, Segment $segment): RedirectResponse
+    {
+        $postData = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'rules' => 'sometimes|array',
+        ]);
 
-    public function update(Request $request, $id) {}
+        Segment::where('id', $segment->id)
+            ->update($postData);
 
-    public function destroy($id) {}
+        return redirect()->route('segment.show', ['segment' => $segment->id]);
+    }
+
+    public function destroy(Segment $segment): void
+    {
+    }
 }

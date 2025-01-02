@@ -5,6 +5,8 @@ import { ISegmentData } from '../../types'
 import ContentCard from '../../Components/ContentCard.vue'
 import { onMounted, reactive, ref, watch } from 'vue'
 import VueSelect from 'vue3-select-component'
+import TotalPurchaseValueRule from './Rules/TotalPurchaseValueRule.vue'
+import MinimumPurchaseValueRule from './Rules/MinimumPurchaseValueRule.vue'
 
 const { initialData, url, isCreate, rules } = defineProps({
   initialData: {
@@ -28,7 +30,7 @@ const { initialData, url, isCreate, rules } = defineProps({
 const form = useForm({
   name: initialData.name || '',
   description: initialData.description || '',
-  rules: [],
+  rules: initialData.rules || [],
 })
 
 const rulesOptions = reactive([])
@@ -93,7 +95,6 @@ const addNewRuleToSegment = () => {
     </ContentCard>
     <ContentCard>
       <div class="block">
-        <pre>{{ form }}</pre>
         <VueSelect
           v-model="selected"
           :options="rulesOptions"
@@ -111,8 +112,16 @@ const addNewRuleToSegment = () => {
         </button>
       </div>
       <div class="block">
-        <div v-for="rule in form.rules" :key="rule">
-          <p>Adding rule {{ rule.rule_name }}</p>
+        <div v-for="(rule, key) in form.rules" :key="rule">
+          <TotalPurchaseValueRule
+            v-model="form.rules[key].total_purchase_value"
+            v-if="rule.rule_name === 'total_purchase_value'"
+          />
+
+          <MinimumPurchaseValueRule
+            v-model="form.rules[key].minimum_purchase_value"
+            v-if="rule.rule_name === 'minimum_purchase_value'"
+          />
         </div>
       </div>
     </ContentCard>
