@@ -21,6 +21,6 @@ class SegmentRequest extends FormRequest
 
     public function authorize(): bool
     {
-        return Auth::user()->role === UserRole::ADMIN->value;
+        return Auth::user()?->role === UserRole::ADMIN->value;
     }
 }

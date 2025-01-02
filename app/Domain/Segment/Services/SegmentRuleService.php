@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 
 class SegmentRuleService
 {
+    /**
+     * @return Collection<string, string>
+     */
     public function getRuleMapping(): Collection
     {
         return collect([
@@ -16,6 +19,9 @@ class SegmentRuleService
         ]);
     }
 
+    /**
+     * @return Collection<string, string>
+     */
     public function getRuleNames(): Collection
     {
         $rules = $this->getRuleMapping();
