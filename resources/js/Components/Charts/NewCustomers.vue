@@ -2,13 +2,13 @@
 const { recentCustomerCount } = defineProps({
   recentCustomerCount: {
     type: Object,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const total = Object.values(recentCustomerCount).reduce(
   (acc, curr) => acc + curr,
-  0,
+  0
 )
 
 const signupsChartColors = {
@@ -19,8 +19,8 @@ const signupsChartColors = {
     '#E5E7EB',
     '#E5E7EB',
     '#E5E7EB',
-    '#E5E7EB',
-  ],
+    '#E5E7EB'
+  ]
 }
 
 const options = {
@@ -31,14 +31,14 @@ const options = {
     foreColor: '#4B5563',
     fontFamily: 'Inter, sans-serif',
     toolbar: {
-      show: false,
-    },
+      show: false
+    }
   },
   theme: {
     monochrome: {
       enabled: true,
-      color: '#1A56DB',
-    },
+      color: '#1A56DB'
+    }
   },
   plotOptions: {
     bar: {
@@ -46,62 +46,62 @@ const options = {
       borderRadius: 3,
       colors: {
         backgroundBarColors: signupsChartColors.backgroundBarColors,
-        backgroundBarRadius: 3,
-      },
+        backgroundBarRadius: 3
+      }
     },
     dataLabels: {
-      hideOverflowingLabels: false,
-    },
+      hideOverflowingLabels: false
+    }
   },
   xaxis: {
     floating: false,
     labels: {
-      show: false,
+      show: false
     },
     axisBorder: {
-      show: false,
+      show: false
     },
     axisTicks: {
-      show: false,
-    },
+      show: false
+    }
   },
   tooltip: {
     shared: true,
     intersect: false,
     style: {
       fontSize: '14px',
-      fontFamily: 'Inter, sans-serif',
-    },
+      fontFamily: 'Inter, sans-serif'
+    }
   },
   states: {
     hover: {
       filter: {
         type: 'darken',
-        value: 0.8,
-      },
-    },
+        value: 0.8
+      }
+    }
   },
   fill: {
-    opacity: 1,
+    opacity: 1
   },
   yaxis: {
-    show: false,
+    show: false
   },
   grid: {
-    show: false,
+    show: false
   },
   dataLabels: {
-    enabled: false,
+    enabled: false
   },
   legend: {
-    show: false,
-  },
+    show: false
+  }
 }
 const series = [
   {
     name: 'Users',
-    data: Object.values(recentCustomerCount),
-  },
+    data: Object.values(recentCustomerCount)
+  }
 ]
 </script>
 
@@ -113,7 +113,7 @@ const series = [
       <h3 class="text-base font-normal text-gray-500">New customers</h3>
       <span
         class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white"
-        >{{ total }}</span
+      >{{ total }}</span
       >
       <p
         class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400"
