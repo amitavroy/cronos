@@ -10,12 +10,25 @@ import NewCustomers from '../../Components/Charts/NewCustomers.vue'
 
 const breadCrumbs = []
 
-const { props } = usePage()
-const { order_count } = defineProps({
-  random_number: String,
-  order_count: String,
+const {
+  order_count,
+  product_count,
+  customer_count,
+  recent_order_count,
+  top_customers,
+  recent_customer_count,
+  top_products
+} = defineProps({
+  random_number: Number,
+  order_count: Number,
+  customer_count: Number,
+  product_count: Number,
+  recent_order_count: Object,
+  top_products: Object,
+  top_customers: Object,
+  recent_customer_count: Object
 })
-usePoll(10000)
+usePoll(20000)
 </script>
 
 <template>
@@ -31,21 +44,21 @@ usePoll(10000)
       >
         <StatsCard
           title="Total products"
-          :stats="props.product_count"
+          :stats="product_count"
           number="12.5%"
           message="Since last month"
           icon="layout"
         />
         <StatsCard
           title="Total orders"
-          :stats="props.order_count"
+          :stats="order_count"
           number="11.5%"
           message="Since last month"
           icon="users"
         />
         <StatsCard
           title="Total customers"
-          :stats="props.customer_count"
+          :stats="customer_count"
           number="15.5%"
           message="Since last month"
           icon="users"
@@ -56,17 +69,17 @@ usePoll(10000)
         class="grid w-full grid-cols-1 gap-4 mt-4 xl:grid-cols-2 2xl:grid-cols-3"
       >
         <NewOrders
-          :recent-order-data="props.recent_order_count"
-          :recent-order-count="props.order_count"
+          :recent-order-data="recent_order_count"
+          :recent-order-count="order_count"
         />
-        <NewCustomers :recent-customer-count="props.recent_customer_count" />
+        <NewCustomers :recent-customer-count="recent_customer_count" />
       </div>
 
       <div class="grid w-full grid-cols-2 gap-4 mt-4">
         <div>
           <TopProdAndCustomer
-            :top-products="props.top_products"
-            :top-customers="props.top_customers"
+            :top-products="top_products"
+            :top-customers="top_customers"
           />
         </div>
         <div></div>
