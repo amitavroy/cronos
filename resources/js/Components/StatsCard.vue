@@ -4,24 +4,24 @@ import Icon from './Icon.vue'
 const { title } = defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   stats: {
     type: Number,
-    required: true
+    required: true,
   },
   number: {
     type: String,
-    required: true
+    required: true,
   },
   message: {
     type: String,
-    required: true
+    required: true,
   },
   icon: {
     type: String,
-    default: null
-  }
+    default: null,
+  },
 })
 </script>
 
@@ -36,7 +36,7 @@ const { title } = defineProps({
         </h3>
         <span
           class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white"
-        >{{ stats }}</span
+          >{{ stats }}</span
         >
         <p
           class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400"
