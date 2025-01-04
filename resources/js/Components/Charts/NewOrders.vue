@@ -2,12 +2,12 @@
 const { recentOrderData } = defineProps({
   recentOrderData: {
     type: Object,
-    required: true
+    required: true,
   },
   recentOrderCount: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const options = {
@@ -18,70 +18,70 @@ const options = {
     fontFamily: 'Inter, sans-serif',
     foreColor: '#4B5563',
     toolbar: {
-      show: false
-    }
+      show: false,
+    },
   },
   plotOptions: {
     bar: {
       columnWidth: '90%',
-      borderRadius: 3
-    }
+      borderRadius: 3,
+    },
   },
   tooltip: {
     shared: false,
     intersect: false,
     style: {
       fontSize: '14px',
-      fontFamily: 'Inter, sans-serif'
-    }
+      fontFamily: 'Inter, sans-serif',
+    },
   },
   states: {
     hover: {
       filter: {
         type: 'darken',
-        value: 1
-      }
-    }
+        value: 1,
+      },
+    },
   },
   stroke: {
     show: true,
     width: 5,
-    colors: ['transparent']
+    colors: ['transparent'],
   },
   grid: {
-    show: false
+    show: false,
   },
   dataLabels: {
-    enabled: false
+    enabled: false,
   },
   legend: {
-    show: false
+    show: false,
   },
   xaxis: {
     floating: false,
     labels: {
-      show: false
+      show: false,
     },
     axisBorder: {
-      show: false
+      show: false,
     },
     axisTicks: {
-      show: false
-    }
+      show: false,
+    },
   },
   yaxis: {
-    show: false
+    show: false,
   },
   fill: {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 }
 const series = [
   {
     name: 'Quantity',
     color: '#1A56DB',
-    data: recentOrderData
-  }
+    data: recentOrderData,
+  },
 ]
 </script>
 
@@ -93,7 +93,7 @@ const series = [
       <h3 class="text-base font-normal text-gray-500">New orders</h3>
       <span
         class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white"
-      >{{ recentOrderCount }}</span
+        >{{ recentOrderCount }}</span
       >
       <p
         class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400"

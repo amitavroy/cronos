@@ -12,12 +12,11 @@ use Inertia\ResponseFactory;
 class HomeController extends Controller
 {
     public function __invoke(
-        HomePageData     $homePageData,
-        CustomerService  $customerService,
-        ProductService   $productService,
+        HomePageData $homePageData,
+        CustomerService $customerService,
+        ProductService $productService,
         ChartDataService $chartDataService,
-    ): Response|ResponseFactory
-    {
+    ): Response|ResponseFactory {
         $data = $homePageData->handle();
 
         return inertia('Home/Index', [

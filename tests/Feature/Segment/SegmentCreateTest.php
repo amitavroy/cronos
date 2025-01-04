@@ -39,4 +39,16 @@ describe('Segment create test', function () {
         post(route('segment.store'), $postData)
             ->assertRedirect(route('segment.index'));
     });
+
+    it('creates a segment which is active', function () {
+        $user = \App\Models\User::factory()->admin()->create();
+
+        actingAs($user);
+
+        $postData = ['name' => 'Segment 1', 'description' => 'Description 1'];
+
+        post(route('segment.store'), $postData);
+
+        assertDatabaseHas('segments', ['is_active' => true]);
+    });
 });

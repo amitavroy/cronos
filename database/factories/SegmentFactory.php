@@ -16,8 +16,16 @@ class SegmentFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'rules' => $this->faker->words(),
+            'is_active' => true,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
+    }
+
+    public function inactive(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_active' => false,
+        ]);
     }
 }

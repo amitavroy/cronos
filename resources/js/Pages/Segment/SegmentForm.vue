@@ -3,34 +3,36 @@ import { useForm } from '@inertiajs/vue3'
 import InputText from '../../Components/InputText.vue'
 import { ISegmentData } from '../../types'
 import ContentCard from '../../Components/ContentCard.vue'
-import { onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import VueSelect from 'vue3-select-component'
 import TotalPurchaseValueRule from './Rules/TotalPurchaseValueRule.vue'
 import MinimumPurchaseValueRule from './Rules/MinimumPurchaseValueRule.vue'
+import InputCheckbox from '../../Components/InputCheckbox.vue'
 
 const { initialData, url, isCreate, rules } = defineProps({
   initialData: {
     type: Object as () => ISegmentData,
-    default: () => ({}),
+    default: () => ({})
   },
   url: {
     type: String,
-    required: true,
+    required: true
   },
   isCreate: {
     type: Boolean,
-    default: true,
+    default: true
   },
   rules: {
     type: Array,
-    required: true,
-  },
+    required: true
+  }
 })
 
 const form = useForm({
   name: initialData.name || '',
   description: initialData.description || '',
   rules: initialData.rules || [],
+  is_active: initialData.is_active
 })
 
 const rulesOptions = reactive([])
@@ -44,7 +46,7 @@ onMounted(() => {
   rules.forEach((rule) => {
     rulesOptions.push({
       label: rule.friendly_name,
-      value: rule.machine_name,
+      value: rule.machine_name
     })
   })
 })
@@ -57,12 +59,12 @@ const addNewRuleToSegment = () => {
   if (selected.value === 'total_purchase_value') {
     form.rules.push({
       rule_name: 'total_purchase_value',
-      total_purchase_value: 0,
+      total_purchase_value: 0
     })
   } else if (selected.value === 'minimum_purchase_value') {
     form.rules.push({
       rule_name: 'minimum_purchase_value',
-      minimum_purchase_value: 0,
+      minimum_purchase_value: 0
     })
   }
 }
@@ -83,6 +85,11 @@ const addNewRuleToSegment = () => {
           name="Segment description"
           placeholder="Enter segment description"
           :error-message="form.errors?.description"
+        />
+        <InputCheckbox
+          v-model="form.is_active"
+          name="Is active"
+          text="Make Segment active"
         />
 
         <button
