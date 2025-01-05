@@ -43,7 +43,16 @@ class DatabaseSeeder extends Seeder
 
         app(CreateRandomOrder::class)->handle(random_int(10, 30));
 
-        Segment::factory(10)->create();
+        Segment::factory(10)->inactive()->create();
+
+        Segment::create([
+            'name' => 'VIP Customers',
+            'description' => 'Customers who have a high purchase total value on my site.',
+            'rules' => [
+                ['rule_name' => 'total_purchase_value', 'total_purchase_value' => 5000],
+                ['rule_name' => 'minimum_purchase_value', 'total_purchase_value' => 500],
+            ],
+        ]);
     }
 
     private function createProducts(): void

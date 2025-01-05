@@ -1,5 +1,6 @@
 <?php
 
+use App\Console\Commands\SyncSegmentDataCommand;
 use App\Console\Commands\TestCreateCustomer;
 use App\Console\Commands\TestCreateOrderCommand;
 use Illuminate\Foundation\Inspiring;
@@ -15,3 +16,6 @@ Schedule::command(TestCreateOrderCommand::class)
 
 Schedule::command(TestCreateCustomer::class)
     ->everyMinute();
+
+Schedule::command(SyncSegmentDataCommand::class)
+    ->hourly();

@@ -2,10 +2,12 @@
 
 namespace App\Domain\Segment\Models;
 
+use App\Models\User;
 use Database\Factories\SegmentFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Segment extends Model
@@ -35,6 +37,12 @@ class Segment extends Model
 
     public function scopeActive(Builder $query): void
     {
-        $this->where('is_active', true);
+        $query->where('is_active', true);
+    }
+
+    public function customers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'segment_customer')
+            ->withPivot('user_id', 'segment_id', 'deleted_at');
     }
 }
