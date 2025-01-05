@@ -8,5 +8,5 @@ interface SegmentRuleInterface
 {
     public function getFriendlyName(): string;
 
-    public function execute(Builder $query): void;
+    public function execute(Builder $query, int $value): void;
 }

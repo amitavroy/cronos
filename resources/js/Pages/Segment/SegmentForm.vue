@@ -59,12 +59,12 @@ const addNewRuleToSegment = () => {
   if (selected.value === 'total_purchase_value') {
     form.rules.push({
       rule_name: 'total_purchase_value',
-      total_purchase_value: 0
+      value: 0
     })
   } else if (selected.value === 'minimum_purchase_value') {
     form.rules.push({
       rule_name: 'minimum_purchase_value',
-      minimum_purchase_value: 0
+      value: 0
     })
   }
 }
@@ -121,12 +121,12 @@ const addNewRuleToSegment = () => {
       <div class="block">
         <div v-for="(rule, key) in form.rules" :key="rule">
           <TotalPurchaseValueRule
-            v-model="form.rules[key].total_purchase_value"
+            v-model="form.rules[key].value"
             v-if="rule.rule_name === 'total_purchase_value'"
           />
 
           <MinimumPurchaseValueRule
-            v-model="form.rules[key].minimum_purchase_value"
+            v-model="form.rules[key].value"
             v-if="rule.rule_name === 'minimum_purchase_value'"
           />
         </div>

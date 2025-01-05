@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class MinimumPurchaseValueRule implements SegmentRuleInterface
 {
-    public function execute(Builder $query): void
+    public function execute(Builder $query, int $value): void
     {
-        $query->whereHas('orders', function ($query) {
-            $query->where('total_amount', '>', 1000);
+        $query->whereHas('orders', function ($query) use ($value) {
+            $query->where('total_amount', '>', $value);
         });
     }
 

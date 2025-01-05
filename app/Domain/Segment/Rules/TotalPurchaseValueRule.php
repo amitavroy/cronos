@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class TotalPurchaseValueRule implements SegmentRuleInterface
 {
-    public function execute(Builder $query): void
+    public function execute(Builder $query, int $value): void
     {
-        $query->whereHas('orders', function ($query) {
+        $query->whereHas('orders', function ($query) use ($value) {
             $query->select(DB::raw('SUM(total_amount) as total_sum'))
                 ->groupBy('user_id')
-                ->havingRaw('SUM(total_amount) >= ?', [1000]);
+                ->havingRaw('SUM(total_amount) >= ?', [$value]);
         });
     }
 
