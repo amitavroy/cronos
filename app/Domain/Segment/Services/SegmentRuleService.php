@@ -2,8 +2,12 @@
 
 namespace App\Domain\Segment\Services;
 
+use App\Domain\Segment\Models\Segment;
 use App\Domain\Segment\Rules\MinimumPurchaseValueRule;
 use App\Domain\Segment\Rules\TotalPurchaseValueRule;
+use App\Services\UserService;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 class SegmentRuleService
@@ -11,7 +15,7 @@ class SegmentRuleService
     /**
      * @return Collection<string, string>
      */
-    public function getRuleMapping(): Collection
+    private function getRuleMapping(): Collection
     {
         return collect([
             'total_purchase_value' => TotalPurchaseValueRule::class,
@@ -36,5 +40,27 @@ class SegmentRuleService
         });
 
         return $ruleNames;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function segmentQuery(Segment $segment): Builder
+    {
+        $query = app(UserService::class)->getBaseUserQueryForSegment();
+
+        $rules = collect($segment->rules);
+
+        $rules->each(function ($rule) use ($query) {
+            $allowedRules = $this->getRuleMapping();
+
+            if (! $allowedRules->has($rule['rule_name'])) {
+                throw new Exception('No such rule exist');
+            }
+
+            app($allowedRules[$rule['rule_name']])->execute($query);
+        });
+
+        return $query;
     }
 }
