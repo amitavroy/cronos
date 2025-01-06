@@ -17,7 +17,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('do-login');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', HomeController::class)->name('home');
     Route::post('/logout', LogoutController::class)->name('logout');
-
+    
     Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
     Route::resource('/order', OrderController::class)->only(['index', 'show']);
 

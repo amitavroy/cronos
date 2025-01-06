@@ -100,7 +100,7 @@ const addNewRuleToSegment = () => {
         </button>
       </form>
     </ContentCard>
-    <ContentCard>
+    <ContentCard v-if="!isCreate">
       <div class="block">
         <VueSelect
           v-model="selected"

@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'VIP Customers',
             'description' => 'Customers who have a high purchase total value on my site.',
             'rules' => [
-                ['rule_name' => 'total_purchase_value', 'value' => 5000],
+                ['rule_name' => 'total_purchase_value', 'value' => 50000],
                 ['rule_name' => 'minimum_purchase_value', 'value' => 500],
             ],
         ]);
