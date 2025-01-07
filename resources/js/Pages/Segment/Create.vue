@@ -7,7 +7,7 @@ import SegmentForm from './SegmentForm.vue'
 const breadCrumb = [
   { name: 'Commerce', link: route('product.index') },
   { name: 'Segments', link: route('segment.index') },
-  { name: 'Create segment', link: null }
+  { name: 'Create segment', link: null },
 ]
 </script>
 
@@ -19,7 +19,11 @@ const breadCrumb = [
     </PageContainer>
 
     <div class="grid">
-      <SegmentForm :url="route('segment.store')" :is-create="true" :rules="{}" />
+      <SegmentForm
+        :url="route('segment.store')"
+        :is-create="true"
+        :rules="{}"
+      />
     </div>
   </div>
 </template>

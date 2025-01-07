@@ -17,7 +17,7 @@ const {
   recent_order_count,
   top_customers,
   recent_customer_count,
-  top_products
+  top_products,
 } = defineProps({
   random_number: Number,
   order_count: Number,
@@ -26,7 +26,7 @@ const {
   recent_order_count: Object,
   top_products: Object,
   top_customers: Object,
-  recent_customer_count: Object
+  recent_customer_count: Object,
 })
 usePoll(20000)
 </script>

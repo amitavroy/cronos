@@ -9,22 +9,24 @@ use App\Http\Controllers\Notification\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PrivateImageController;
 use App\Http\Controllers\SegmentController;
+use App\Http\Controllers\SegmentUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::post('/login', [LoginController::class, 'store'])->name('do-login');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::post('login', [LoginController::class, 'store'])->name('do-login');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', HomeController::class)->name('home');
-    Route::post('/logout', LogoutController::class)->name('logout');
-    
-    Route::resource('/customer', CustomerController::class)->only(['index', 'show']);
-    Route::resource('/order', OrderController::class)->only(['index', 'show']);
+    Route::post('logout', LogoutController::class)->name('logout');
 
-    Route::resource('/segment', SegmentController::class);
+    Route::resource('customer', CustomerController::class)->only(['index', 'show']);
+    Route::resource('order', OrderController::class)->only(['index', 'show']);
 
-    Route::resource('/notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
-    Route::post('/notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
+    Route::resource('segment', SegmentController::class);
+    Route::resource('segment.users', SegmentUserController::class);
 
-    Route::get('/private-image', PrivateImageController::class)->name('private-image');
+    Route::resource('notification', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
+    Route::post('notification/mark-read', MarkNotificationReadController::class)->name('notification.mark-read');
+
+    Route::get('private-image', PrivateImageController::class)->name('private-image');
 });

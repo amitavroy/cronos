@@ -54,7 +54,7 @@ class SegmentRuleService
         $rules->each(function ($rule) use ($query) {
             $allowedRules = $this->getRuleMapping();
 
-            if (!$allowedRules->has($rule['rule_name'])) {
+            if (! $allowedRules->has($rule['rule_name'])) {
                 throw new Exception('No such rule exist');
             }
 

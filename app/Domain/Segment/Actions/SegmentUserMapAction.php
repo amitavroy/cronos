@@ -11,9 +11,7 @@ class SegmentUserMapAction
 {
     public function __construct(
         private readonly SegmentRuleService $segmentRuleService
-    )
-    {
-    }
+    ) {}
 
     /**
      * @throws Exception

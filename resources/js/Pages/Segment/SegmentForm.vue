@@ -12,27 +12,27 @@ import InputCheckbox from '../../Components/InputCheckbox.vue'
 const { initialData, url, isCreate, rules } = defineProps({
   initialData: {
     type: Object as () => ISegmentData,
-    default: () => ({})
+    default: () => ({}),
   },
   url: {
     type: String,
-    required: true
+    required: true,
   },
   isCreate: {
     type: Boolean,
-    default: true
+    default: true,
   },
   rules: {
     type: Array,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const form = useForm({
   name: initialData.name || '',
   description: initialData.description || '',
   rules: initialData.rules || [],
-  is_active: initialData.is_active
+  is_active: initialData.is_active,
 })
 
 const rulesOptions = reactive([])
@@ -46,7 +46,7 @@ onMounted(() => {
   rules.forEach((rule) => {
     rulesOptions.push({
       label: rule.friendly_name,
-      value: rule.machine_name
+      value: rule.machine_name,
     })
   })
 })
@@ -59,12 +59,12 @@ const addNewRuleToSegment = () => {
   if (selected.value === 'total_purchase_value') {
     form.rules.push({
       rule_name: 'total_purchase_value',
-      value: 0
+      value: 0,
     })
   } else if (selected.value === 'minimum_purchase_value') {
     form.rules.push({
       rule_name: 'minimum_purchase_value',
-      value: 0
+      value: 0,
     })
   }
 }
