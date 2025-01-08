@@ -16,7 +16,8 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.0' # Specify your PHP version
+          php-version: '8.3'
+          extensions: pcov, gd
 
       - name: Install Composer
         run: sudo apt-get install composer
